@@ -1,0 +1,131 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_taleem/footer.
+    Taleem footer layout template.
+}}
+{{#blockarrange}}
+    <div class="Topbarsdiv topbar-inner">
+        <div id="tab_content" class="container topbarinner">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-lg-2 topbar-email">
+                    <div class="topbar-contact">    
+                        {{#phoneno}}
+                            <p><i class="fa fa-phone-square"></i> {{phoneno}}</p>
+                        {{/phoneno}}
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 col-lg-3 topbar-email">
+                    <div class="topbar-contact">
+                        {{#emailid}}
+                            <p><i class="fa fa-envelope"></i> <a class="mail-link" href="mailto:{{emailid}}">{{emailid}}</a>
+                            </p>
+                        {{/emailid}}
+                    </div>
+                </div>
+          
+                <div class="col-md-6 col-sm-4 col-lg-7 media-icon">
+                    <div class="social-media">
+                            {{# fburl}}
+                                <a href="{{fburl}}" target="_blank">
+                                    <span class="media-icon">
+                                    <i class="fa {{fb}} topbaricon"></i>
+                                    </span>
+                                </a>
+                            {{/ fburl}}
+
+                            {{# twurl}}
+                                <a href="{{twurl}}" target="_blank">
+                                    <span class="media-icon">
+                                    <i class="fa {{tw}} topbaricon"></i>
+                                    </span>
+                                </a>
+                            {{/ twurl}}
+
+                            {{# gpurl}}
+ 
+                                <a href="{{gpurl}}" target="_blank">
+                                    <span class="media-icon">
+                                    <i class="fa {{gp}} topbaricon"></i>
+                                    </span>
+                                </a>
+
+                            {{/ gpurl}}
+
+                            {{# pinurl}}
+                                <a href="{{pinurl}}" target="_blank">
+                                   <span class="media-icon">
+                                   <i class="fa {{pi}} topbaricon"></i>
+                                   </span>
+                                </a>
+                            {{/ pinurl}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/blockarrange}}
+
+
+
+<style>
+.col-md-6.col-sm-4.col-lg-7.media-icon {
+    text-align: right;
+}
+i.fa.fa-twitter.topbaricon {
+    background: #fa8842 !important;
+    padding: 14px 11px;
+    margin-top: -7px;
+    color: #fff;
+    margin-right: 5px;
+}
+.fa.fa-facebook-f.topbaricon {
+    background: #97ce34;
+    padding: 14px 14px;
+    margin-top: -7px;
+    color: #fff;
+    margin-right: 5px;
+}
+i.fa.fa-google-plus.topbaricon {
+    background: #2aace8;
+    padding: 14px 8px;
+    margin-top: -7px;
+    color: #fff;
+    margin-right: 5px;
+}
+i.fa.fa-pinterest-p.topbaricon {
+    background: #8E558F;
+    padding: 14px 13px;
+    margin-top: -7px;
+    color: #fff;
+}
+.topbar-inner{
+    margin-top: 50px;
+}
+.topbar-contact a{
+    color: #fff;
+}
+.header-main.additionalcss {
+    margin-top: 0px;
+}
+@media only screen and (max-width: 767px){
+    .topbar-inner{
+        margin-top: 0px;
+    }
+}
+</style>
