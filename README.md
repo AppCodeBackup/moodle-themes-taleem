@@ -15,9 +15,10 @@ Taleem is a fully responsive Moodle theme well suited for Universities,Schools &
 
 Supported moodle versions
 ============================
-Compatible with Moodle 3.1,3.2,3.3,3.4
-Taleem theme - Installation steps
+Compatible with Moodle 3.5+
 
+Taleem theme - Installation steps
+============================
     On your download pacakge, you will find theme_taleem.zip
     Unzip - theme_taleem.zip, you will get folder 'taleem'
     Copy folder 'taleem' and put into theme folder of your moodle system
