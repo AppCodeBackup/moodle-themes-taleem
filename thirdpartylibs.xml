@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<libraries>
+    <library>
+        <location>javascript/slick.js</location>
+        <name>Slider script</name>
+        <license>MIT</license>
+        <version>1.5.0</version>
+        <licenseversion></licenseversion>
+    </library>
+</libraries>
