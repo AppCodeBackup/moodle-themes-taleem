@@ -1,5 +1,5 @@
                     GNU GENERAL PUBLIC LICENSE
-                       Version 1.1.0, 1 November 2018
+                       Version v1.1.0, 30 November 2018
 
  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies

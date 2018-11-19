@@ -77,9 +77,6 @@ if ($toggleslideshow == 1) {
             <nav class="breadcrumb-nav"><?php echo $OUTPUT->navbar(); ?></nav>
             <div class="breadcrumb-button"><?php echo $OUTPUT->page_heading_button(); ?></div>
         </div>
-        <div id="course-header">
-            <?php echo $OUTPUT->course_header(); ?>
-        </div>
     </header>
     <div id="page-content" class="row">
     <?php
@@ -105,7 +102,7 @@ if ($toggleslideshow == 1) {
  <script src="<?php echo theme_taleem_theme_url(); ?>/javascript/slick.js"></script>
 <script>
 $( function() {
-
+    
     if ($('body').hasClass('dir-rtl') ) {
         var rtl = true;
     } else {
