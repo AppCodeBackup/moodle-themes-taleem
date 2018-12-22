@@ -82,37 +82,37 @@ a {
 .btn-primary {
     background: $color_secondary;
     &:hover {
-        background: $color_primary !important;
+        background: $color_primary;
     }
     &:focus {
         &:active {
             color: $white;
-            background-color: $color_primary !important;
+            background-color: $color_primary;
         }
     }
     &:focus {
-        background: $color_primary !important;
+        background: $color_primary;
     }
     &:active {
-        background: $color_primary !important;
+        background: $color_primary;
     }
 }
 .btn-secondary {
     background: $color_secondary;
     &:hover {
-        background: $color_primary !important;
+        background: $color_primary;
     }
     &:focus {
         &:active {
             color: $white;
-            background-color: $color_primary !important;
+            background-color: $color_primary;
         }
     }
     &:focus {
-        background: $color_primary !important;
+        background: $color_primary;
     }
     &:active {
-        background: $color_primary !important;
+        background: $color_primary;
     }
 }
 #header {
@@ -961,7 +961,7 @@ table.flexible {
     }
 }
 #page-course-management .dropdown .dropdown-menu a {
-    padding: .25rem 1.5rem!important;
+    padding:.25rem 1.5rem;
     background: $color_primary;
     &:hover {
         background: $color_secondary;

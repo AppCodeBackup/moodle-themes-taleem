@@ -15,7 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * course_renderer.php
  *
  * This is built using the boost template to allow for new theme's using
  * Moodle's new Boost theme engine
@@ -101,7 +100,12 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
                     $imgurl = $noimgurl;
                 }
 
-                $rowcontent .= '<div class="col-md-3 col-sm-6"><div class="fp-coursebox"><div class="fp-coursethumb"><a href="'.$courseurl.'"><img src="'.$imgurl.'" width="243" height="165" alt="'.$course->fullname.'"></a></div><div class="fp-courseinfo"><h5><a href="'.$courseurl.'">'.$course->fullname.'</a></h5></div></div></div>';
+                $rowcontent .= '<div class="col-md-3 col-sm-6"><div class="fp-coursebox">
+                <div class="fp-coursethumb">
+                <a href="'.$courseurl.'">
+                <img src="'.$imgurl.'" width="243" height="165" alt="'.$course->fullname.'"></a>
+                </div><div class="fp-courseinfo"><h5><a href="'.$courseurl.'">'.$course->fullname.'</a></h5>
+                </div></div></div>';
                 $content .= $rowcontent;
             }
             $content .= '</div>';
@@ -163,7 +167,10 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
         $promotedtitle = theme_taleem_get_setting('promotedtitle', 'format_text');
         $promotedtitle = theme_taleem_lang($promotedtitle);
 
-        $featuredheader = '<div class="custom-courses-list" id="Promoted-Courses"><div class="container"><div class="titlebar with-felements"><h2>'.$promotedtitle.'</h2><div class="clearfix"></div></div><div class="promoted_courses" data-crow="'.$totalfcourse.'">';
+        $featuredheader = '<div class="custom-courses-list" id="Promoted-Courses">
+        <div class="container"><div class="titlebar with-felements"><h2>'.$promotedtitle.'</h2>
+        <div class="clearfix"></div>
+        </div><div class="promoted_courses" data-crow="'.$totalfcourse.'">';
 
         $featuredfooter = ' </div></div></div>';
 
@@ -205,7 +212,11 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
                     if (empty($imgurl)) {
                         $imgurl = $noimgurl;
                     }
-                    $coursehtml = '<div class="col-md-4"><div class="course-box"><div class="thumb"><a href="'.$courseurl.'"><img src="'.$imgurl.'" width="135" height="135" alt="'.$course->fullname.'"></a></div><div class="info"><h5><a href="'.$courseurl.'">'.$course->fullname.'</a></h5></div></div></div>';
+                    $coursehtml = '<div class="col-md-4"><div class="course-box">
+                    <div class="thumb"><a href="'.$courseurl.'">
+                    <img src="'.$imgurl.'" width="135" height="135" alt="'.$course->fullname.'"></a>
+                    </div><div class="info"><h5>
+                    <a href="'.$courseurl.'">'.$course->fullname.'</a></h5></div></div></div>';
 
                     $rowcontent .= $coursehtml;
                 }
@@ -250,7 +261,7 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
             $nametag = 'div';
         }
 
-        // .coursebox
+        // Coursebox.
         $content .= html_writer::start_tag('div', array(
             'class' => $classes,
             'data-courseid' => $course->id,
@@ -258,8 +269,6 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
         ));
 
         $content .= html_writer::start_tag('div', array('class' => 'info'));
-
-        // course name
         $coursename = $chelper->get_course_formatted_name($course);
         $coursenamelink = html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
                                             $coursename, array('class' => $course->visible ? '' : 'dimmed'));
@@ -275,19 +284,15 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
                 $this->coursecat_include_js();
             }
         }
-        $content .= html_writer::end_tag('div'); // .moreinfo
-
-        // print enrolmenticons
+        $content .= html_writer::end_tag('div');
         if ($icons = enrol_get_course_info_icons($course)) {
             $content .= html_writer::start_tag('div', array('class' => 'enrolmenticons'));
-            foreach ($icons as $pix_icon) {
-                $content .= $this->render($pix_icon);
+            foreach ($icons as $pixicon) {
+                $content .= $this->render($pixicon);
             }
-            $content .= html_writer::end_tag('div'); // .enrolmenticons
+            $content .= html_writer::end_tag('div');
         }
-
-        $content .= html_writer::end_tag('div'); // .info
-
+        $content .= html_writer::end_tag('div');
         if (empty($course->get_course_overviewfiles())) {
             $class = "content-block";
         } else {
@@ -295,9 +300,8 @@ class theme_taleem_core_course_renderer extends core_course_renderer {
         }
         $content .= html_writer::start_tag('div', array('class' => 'content '.$class));
         $content .= $this->coursecat_coursebox_content($chelper, $course);
-        $content .= html_writer::end_tag('div'); // .content
-
-        $content .= html_writer::end_tag('div'); // .coursebox
+        $content .= html_writer::end_tag('div');
+        $content .= html_writer::end_tag('div');
         return $content;
     }
 }

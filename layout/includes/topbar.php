@@ -1,5 +1,6 @@
 <?php
 // This file is part of Moodle - http://moodle.org/
+//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -28,76 +29,74 @@ defined('MOODLE_INTERNAL') || die();
  * topbar
  * @return string
  */
-function topbar_content(){
-  $topbarnote = theme_taleem_get_setting('topbarnote', true);
-  $topbarnote = theme_taleem_lang($topbarnote);
+function topbar_content() {
+    $topbarnote = theme_taleem_get_setting('topbarnote', true);
+    $topbarnote = theme_taleem_lang($topbarnote);
 
-  $topbaremail = theme_taleem_get_setting('topbaremail', true);
-  $topbaremail = theme_taleem_lang($topbaremail);
+    $topbaremail = theme_taleem_get_setting('topbaremail', true);
+    $topbaremail = theme_taleem_lang($topbaremail);
 
-  $fburl    = theme_taleem_get_setting('fburl');
-  $fburl    = trim($fburl);
-  $twurl    = theme_taleem_get_setting('twurl');
-  $twurl    = trim($twurl);
-  $gpurl    = theme_taleem_get_setting('gpurl');
-  $gpurl    = trim($gpurl);
-  $pinurl   = theme_taleem_get_setting('pinurl');
-  $pinurl   = trim($pinurl);
+    $fburl    = theme_taleem_get_setting('fburl');
+    $fburl    = trim($fburl);
+    $twurl    = theme_taleem_get_setting('twurl');
+    $twurl    = trim($twurl);
+    $gpurl    = theme_taleem_get_setting('gpurl');
+    $gpurl    = trim($gpurl);
+    $pinurl   = theme_taleem_get_setting('pinurl');
+    $pinurl   = trim($pinurl);
 
-  $socialurl = ($fburl != '' || $pinurl != '' || $twurl != '' || $gpurl != '') ? 1 : 0;
-  $fb = get_string('mediaicon1', 'theme_taleem');
-  $tw = get_string('mediaicon2', 'theme_taleem');
-  $gp = get_string('mediaicon3', 'theme_taleem');
-  $pi = get_string('mediaicon4', 'theme_taleem');
+    $socialurl = ($fburl != '' || $pinurl != '' || $twurl != '' || $gpurl != '') ? 1 : 0;
+    $fb = get_string('mediaicon1', 'theme_taleem');
+    $tw = get_string('mediaicon2', 'theme_taleem');
+    $gp = get_string('mediaicon3', 'theme_taleem');
+    $pi = get_string('mediaicon4', 'theme_taleem');
 
-  $fbn = get_string('medianame1', 'theme_taleem');
-  $twn = get_string('medianame2', 'theme_taleem');
-  $gpn = get_string('medianame3', 'theme_taleem');
-  $pin = get_string('medianame4', 'theme_taleem');
+    $fbn = get_string('medianame1', 'theme_taleem');
+    $twn = get_string('medianame2', 'theme_taleem');
+    $gpn = get_string('medianame3', 'theme_taleem');
+    $pin = get_string('medianame4', 'theme_taleem');
 
-$tabcontent = html_writer::start_tag('div', array('class' => 'Topbarsdiv test'));
-  $tabcontent .= html_writer::start_tag('div', array('id' => 'tab_content', 'class' => 'container'));
+    $tabcontent = html_writer::start_tag('div', array('class' => 'Topbarsdiv test'));
+    $tabcontent .= html_writer::start_tag('div', array('id' => 'tab_content', 'class' => 'container'));
     $tabcontent .= html_writer::start_tag('div', array('id' => '', 'class' => 'row'));
-    //first colmd
+
       $tabcontent .= html_writer::start_tag('div', array('id' => '', 'class' => 'col-md-3 col-sm-4 col-lg-2 topbar-email'));
         $tabcontent .= html_writer::start_tag('i', array('class' => 'fa fa-mobile'));
-         $tabcontent .= html_writer::end_tag('i');  
+         $tabcontent .= html_writer::end_tag('i');
           $tabcontent .= $topbarnote;
       $tabcontent .= html_writer::end_tag('div');
-    //second colmd
+
       $tabcontent .= html_writer::start_tag('div', array('id' => '', 'class' => 'col-md-3 col-sm-4 col-lg-3 topbar-email'));
         $tabcontent .= html_writer::start_tag('i', array('class' => 'fa fa-envelope'));
           $tabcontent .= html_writer::end_tag('i');
           $tabcontent .= $topbaremail;
       $tabcontent .= html_writer::end_tag('div');
-    //Third colmd
-      $tabcontent .= html_writer::start_tag('div', array('id' => '', 'class' => 'col-md-6 col-sm-4 col-lg-7 media-icon')); 
-     //facebook   
+
+      $tabcontent .= html_writer::start_tag('div', array('id' => '', 'class' => 'col-md-6 col-sm-4 col-lg-7 media-icon'));
         $tabcontent .= html_writer::start_tag('a', array('href' => $fburl));
-            $tabcontent .= html_writer::start_tag('i', array('class' =>$fb)); 
+            $tabcontent .= html_writer::start_tag('i', array('class' => $fb));
             $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
-      //Twitter
+
         $tabcontent .= html_writer::start_tag('a', array('href' => $twurl));
-          $tabcontent .= html_writer::start_tag('i', array('class' =>$tw)); 
+          $tabcontent .= html_writer::start_tag('i', array('class' => $tw));
           $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
-      //Google
+
         $tabcontent .= html_writer::start_tag('a', array('href' => $gpurl));
-          $tabcontent .= html_writer::start_tag('i', array('class' =>$gp)); 
+          $tabcontent .= html_writer::start_tag('i', array('class' => $gp));
           $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
-      //Printrest
-        $tabcontent .= html_writer::start_tag('a', array('href' => $pinurl));  
-          $tabcontent .= html_writer::start_tag('i', array('class' =>$pi)); 
+
+        $tabcontent .= html_writer::start_tag('a', array('href' => $pinurl));
+          $tabcontent .= html_writer::start_tag('i', array('class' => $pi));
           $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
       $tabcontent .= html_writer::end_tag('div');
-                   
     $tabcontent .= html_writer::end_tag('div');
-  $tabcontent .= html_writer::end_tag('div');
-$tabcontent .= html_writer::end_tag('div');
-  return $tabcontent;
+    $tabcontent .= html_writer::end_tag('div');
+    $tabcontent .= html_writer::end_tag('div');
+    return $tabcontent;
 }
 
 echo topbar_content();

@@ -15,12 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * slideshow.php
+ * The maintenance layout.
  *
- * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
- * @author      VWThemes
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   theme_taleem
+ * @copyright 2018 VWThemes, vwthemes.com/moodle-themes
+ * @author    VWThemes
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -37,13 +37,15 @@ function slideshow() {
     if ($numberofslides) {
         $content = html_writer::start_tag('div', array('class' => 'homepage-carousel'));
 
-        $content .= html_writer::start_tag('div', array('id' => 'home-page-carousel', 'class' => 'carousel slide', 'data-ride' => 'carousel'));
+        $content .= html_writer::start_tag('div', array('id' => 'home-page-carousel',
+         'class' => 'carousel slide', 'data-ride' => 'carousel'));
 
         $content .= html_writer::start_tag('ol', array('class' => 'carousel-indicators'));
 
         for ($s = 0; $s < $numberofslides; $s++):
             $clstxt = ($s == "0") ? ' class="active"' : '';
-            $content .= html_writer::start_tag('li', array('data-target' => '#home-page-carousel', 'data-slide-to' => $s.$clstxt));
+            $content .= html_writer::start_tag('li', array('data-target' => '#home-page-carousel',
+             'data-slide-to' => $s.$clstxt));
             $content .= html_writer::end_tag('li');
         endfor;
 
@@ -62,7 +64,6 @@ function slideshow() {
             if (right_to_left()) {
                 $icon = "fa-angle-left";
             }
-
             $content .= html_writer::start_tag('div', array('
                 class' => 'carousel-item'.$clstxt2, 'style' => 'background-image: url('.$slideimg));
 
@@ -92,14 +93,14 @@ function slideshow() {
             $content .= html_writer::end_tag('div');
         endfor;
 
-        $content .= html_writer::start_tag('a', array('class' => 'left carousel-control carousel-control-prev', 'href' => '#home-page-carousel', '
-            data-slide' => 'prev'));
+        $content .= html_writer::start_tag('a', array('class' => 'left carousel-control carousel-control-prev', 'href' =>
+         '#home-page-carousel', 'data-slide' => 'prev'));
 
         $content .= '<span class="carousel-control-prev-icon"></span>';
         $content .= html_writer::end_tag('a');
 
-        $content .= html_writer::start_tag('a', array('
-            class' => 'right carousel-control carousel-control-next', 'href' => '#home-page-carousel', 'data-slide' => 'next'));
+        $content .= html_writer::start_tag('a', array('class' => 'right carousel-control carousel-control-next',
+         'href' => '#home-page-carousel', 'data-slide' => 'next'));
         $content .= '<span class="carousel-control-next-icon"></span>';
         $content .= html_writer::end_tag('a');
 

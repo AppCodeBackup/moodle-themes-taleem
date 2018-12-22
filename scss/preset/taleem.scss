@@ -92,7 +92,7 @@ body {
     background: $black_50;
     font-family: 'Nunito', sans-serif;
 }
-#page-site-index{
+#page-site-index {
     background: $white ;
 }
 .container {
@@ -1041,7 +1041,7 @@ img {
 }
 .btn-default {
     color: $color_chicago_approx;
-    background: $color_celeste_approx !important;
+    background: $color_celeste_approx;
     border: 0;
     &:hover {
         background: $color_nobel_approx;
@@ -1061,47 +1061,47 @@ img {
     border: 0;
     &:hover {
         color: $white;
-        background: $color_primary !important;
+        background: $color_primary;
         box-shadow: none;
         outline: none;
         &:active {
             color: $white;
-            background-color: $color_primary !important;
-            box-shadow: none !important;
+            background-color: $color_primary;
+            box-shadow: none;
         }
     }
     &:focus {
         color: $white;
-        background: $color_primary !important;
-        box-shadow: none !important;
+        background: $color_primary;
+        box-shadow: none;
         outline: none;
     }
     &:active {
         color: $white;
-        background: $color_primary !important;
+        background: $color_primary;
         box-shadow: none;
-        outline: none !important;
+        outline: none;
         &:focus {
             color: $color_chicago_approx;
-            background: $color_primary !important;
+            background: $color_primary;
             outline: none;
-            box-shadow: none !important;
+            box-shadow: none;
         }
     }
     &:focus {
         &:active {
             color: $white;
-            background-color: $color_primary !important;
+            background-color: $color_primary;
         }
     }
     &.active:hover {
-        background: $color_primary !important;
-        outline: none !important;
+        background: $color_primary;
+        outline: none;
     }
     &.focus:active {
-        background: $color_primary !important;
+        background: $color_primary;
         outline: none;
-        box-shadow: none !important;
+        box-shadow: none;
     }
 }
 .btn-secondary {
@@ -1113,26 +1113,26 @@ img {
     }
     &:focus {
         outline: none;
-        background-color: $color_whisper !important;
-        border-color: $color_gray !important;
-        box-shadow: none !important;
+        background-color: $color_whisper;
+        border-color: $color_gray;
+        box-shadow: none;
         &:active {
             outline: none;
-            background-color: $color_whisper !important;
-            border-color: $color_gray !important;
-            box-shadow: none !important;
+            background-color: $color_whisper;
+            border-color: $color_gray;
+            box-shadow: none;
         }
     }
     &:active {
         outline: none;
-        background-color: $color_whisper !important;
-        border-color: $color_gray !important;
-        box-shadow: none !important;
+        background-color: $color_whisper;
+        border-color: $color_gray;
+        box-shadow: none;
         &:focus {
             outline: none;
-            background-color: $color_whisper !important;
-            border-color: $color_gray !important;
-            box-shadow: none !important;
+            background-color: $color_whisper;
+            border-color: $color_gray;
+            box-shadow: none;
         }
     }
 }
@@ -5815,7 +5815,7 @@ button.closebutton {
 .calendarwrapper {
     overflow: auto;
 }
-@media (min-width: 576px) {
+@media (min-width:576px) {
     #page-my-index {
         .tab-content {
             .courses-view-course-item {
@@ -5824,7 +5824,7 @@ button.closebutton {
         }
     }
 }
-@media (max-width: 575px) {
+@media (max-width:575px) {
     #page-my-index {
         .tab-content {
             .courses-view-course-item {
@@ -5838,10 +5838,8 @@ button.closebutton {
     height: 300px;
     padding: 0px;
     border: 1px transparent;
-}   
-.custom-courses-list .course-box .thumb a img {
-    width: 100%;
-} 
+}
+.custom-courses-list .course-box .thumb a img {width: 100%;} 
 .custom-site-expo {
     display: none;
 }
@@ -5873,10 +5871,10 @@ z-index: 77777;
 .col-md-2.header-logo {
     margin-right: -50px;
 }
-.container-fluid.headerfiles{
+.container-fluid.headerfiles {
     padding: 0px 0px;
 }
-#footer .footer-foot{
+#footer .footer-foot {
 	background: transparent !important;
 }
 #page-my-index .header-main.additionalcss {
@@ -5897,7 +5895,7 @@ div#tab_content {
 .info:hover {
     background: #424040;
 }
-.titlebar.with-felements h2{    
+.titlebar.with-felements h2 {    
     background: url(taleem/pix/taleemborder.png)no-repeat center bottom !important;
     padding-bottom: 6px;
 }
@@ -5921,12 +5919,12 @@ a {
 #page-login-index .header-main.additionalcss {
     display: none;
 }    
-@media (max-width: 600px) {
-    .col-md-1, .col-md-9.header-main{
+@media (max-width:600px) {
+    .col-md-1, .col-md-9.header-main {
         display: none;
     }  
 }
-@media (max-width: 767px) and (min-width: 320px) {
+@media (max-width:767px) and (min-width:320px) {
     .topbar-inner {
         margin-top: 13px;
         padding: 0px;
@@ -6102,7 +6100,7 @@ a {
     margin-top: -1px;
 }
 }
-@media (max-width: 1024px) and (min-width: 991px) {
+@media (max-width:1024px) and (min-width:991px) {
 .col-md-2.header-logo {
     margin-right: 0px;
 }
@@ -6110,7 +6108,7 @@ a {
     font-size: 13px;
 }
 }
-@media (max-width: 2199px) and (min-width: 1024px) {
+@media (max-width:2199px) and (min-width:1024px) {
     .homepage-carousel .carousel-inner > .carousel-item .carousel-content {
         max-width: 500px;
         padding: 18px 28px 28px;
@@ -6130,7 +6128,7 @@ a {
     font-size: 15px;
 }
 }
-@media (max-width: 7000px) and (min-width: 2200px) {
+@media (max-width:7000px) and (min-width:2200px) {
     .homepage-carousel .carousel-inner > .carousel-item .carousel-content {
         left: 45%;
     }
@@ -6152,4 +6150,10 @@ a {
 .card-text.content.mt-3 .info {
     background: none;
     border-top: none;
+}
+#page-wrapper {
+    display: inline;
+}
+.tool_dataprivacy {
+    display: none;
 }

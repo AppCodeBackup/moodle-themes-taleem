@@ -82,7 +82,22 @@ if (is_siteadmin()) {
             $cp.'default.jpg' , $cp.'colorscheme-1.jpg', $cp.'colorscheme-2.jpg',
             $cp.'colorscheme-3.jpg' , $cp.'colorscheme-4.jpg');
 
-    $themepattern = '<ul class="thumbnails theme-color-schemes"><li class=""><div class="thumbnail"><img src="'.$pimg[0].'" alt="default" width="100" height="100"/><h6>'.get_string( "default", 'theme_taleem' ).'</h6></div></li><li class=""><div class="thumbnail"><img src="'.$pimg[1].'" alt="pattern1" width="100" height="100"/><h6>'.get_string("color_1", 'theme_taleem').'</h6></div></li><li class=""><div class="thumbnail"><img src="'.$pimg[2].'" alt="pattern2" width="100" height="100"/><h6>'.get_string("color_2", 'theme_taleem').'</h6></div></li><li class=""><div class="thumbnail"><img src="'.$pimg[3].'" alt="pattern3" width="100" height="100"/><h6>'.get_string("color_3", 'theme_taleem').'</h6></div></li><li class=""><div class="thumbnail"><img src="'.$pimg[4].'" alt="pattern4" width="100" height="100"/><h6>'.get_string("color_4", 'theme_taleem').'</h6></div></li></ul>';
+    $themepattern = '<ul class="thumbnails theme-color-schemes">
+    <li class=""><div class="thumbnail">
+    <img src="'.$pimg[0].'" alt="default" width="100" height="100"/>
+    <h6>'.get_string( "default", 'theme_taleem' ).'</h6></div></li>
+    <li class=""><div class="thumbnail">
+    <img src="'.$pimg[1].'" alt="pattern1" width="100" height="100"/>
+    <h6>'.get_string("color_1", 'theme_taleem').'</h6></div></li>
+    <li class=""><div class="thumbnail">
+    <img src="'.$pimg[2].'" alt="pattern2" width="100" height="100"/>
+    <h6>'.get_string("color_2", 'theme_taleem').'</h6></div></li>
+    <li class=""><div class="thumbnail">
+    <img src="'.$pimg[3].'" alt="pattern3" width="100" height="100"/>
+    <h6>'.get_string("color_3", 'theme_taleem').'</h6></div></li>
+    <li class=""><div class="thumbnail">
+    <img src="'.$pimg[4].'" alt="pattern4" width="100" height="100"/>
+    <h6>'.get_string("color_4", 'theme_taleem').'</h6></div></li></ul>';
 
     $temp->add(new admin_setting_heading('theme_taleem_patternheading', '', $themepattern));
 
@@ -218,39 +233,33 @@ if (is_siteadmin()) {
         $settings->add($temp);
     /* Slideshow Settings End*/
 
+    /* Top Bar Settings start */
+    $temp = new admin_settingpage('theme_taleem_topbar', get_string('topbarheading', 'theme_taleem'));
+    // Top Bar Block1.
+    $name = 'theme_taleem_topbarblockheading';
+    $heading = get_string('topbarblock', 'theme_taleem');
+    $information = '';
+    $setting = new admin_setting_heading($name, $heading, $information);
+    $temp->add($setting);
 
+    /* Top Bar phone & Email id Content */
+    $name = 'theme_taleem/topbarnote';
+    $title = get_string('topbarnote', 'theme_taleem');
+    $description = get_string('topbarnotedesc', 'theme_taleem');
+    $default = '(000) 123-456';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $temp->add($setting);
 
-  /* Top Bar Settings start */
-   $temp = new admin_settingpage('theme_taleem_topbar', get_string('topbarheading', 'theme_taleem'));
-   // Top Bar Block1.
-   $name = 'theme_taleem_topbarblockheading';
-   $heading = get_string('topbarblock', 'theme_taleem');
-   $information = '';
-   $setting = new admin_setting_heading($name, $heading, $information);
-   $temp->add($setting);
-
-   /* Top Bar phone & Email id Content */
-   $name = 'theme_taleem/topbarnote';
-   $title = get_string('topbarnote', 'theme_taleem');
-   $description = get_string('topbarnotedesc', 'theme_taleem');
-   $default = '(000) 123-456';
-   $setting = new admin_setting_configtext($name, $title, $description, $default);
-   $temp->add($setting);
-
-   $name = 'theme_taleem/topbaremail';
-   $title = get_string('topbaremail', 'theme_taleem');
-   $description = get_string('topbaremaildesc', 'theme_taleem');
-   $default = 'info@gmail.com';
-   $setting = new admin_setting_configtext($name, $title, $description, $default);
-   $temp->add($setting);
-   $settings->add($temp);
-
-	/* Top Bar Settings END */
-
-    
+    $name = 'theme_taleem/topbaremail';
+    $title = get_string('topbaremail', 'theme_taleem');
+    $description = get_string('topbaremaildesc', 'theme_taleem');
+    $default = 'info@gmail.com';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $temp->add($setting);
+    $settings->add($temp);
+    /* Top Bar Settings END */
     /* Footer Settings start */
     $temp = new admin_settingpage('theme_taleem_footer', get_string('footerheading', 'theme_taleem'));
-
     // Footer Block1.
     $name = 'theme_taleem_footerblock1heading';
     $heading = get_string('footerblock', 'theme_taleem').' 1 ';
@@ -370,9 +379,6 @@ if (is_siteadmin()) {
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
     /* Footer Block3. */
-    
-
-    /* Footer Block4. */
     $name = 'theme_taleem_footerblock4heading';
     $heading = get_string('footerblock', 'theme_taleem').' 4 ';
     $information = '';

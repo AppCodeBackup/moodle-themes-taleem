@@ -1,6 +1,6 @@
 //colors
 $color_secondary: rgba(150, 220, 57, 0.48);
-$color_primary: #222222;
+$color_primary: #222;
 $color_green_house_approx: rgba(150, 220, 57, 0.48);
 $color_green_house_90_approx: rgba(47, 81, 15, .9);
 $color_vida_loca_approx: #528125;
@@ -34,11 +34,11 @@ h4 {
 h5 {
     color: $white;
 }
-.info{
-    border-top: solid 10px  $color_green_house_90_approx ;
+.info {
+    border-top: solid 10px $color_green_house_90_approx ;
 }
 .info a {
-    color: $white !important;
+    color: $white;
 }
 h6 {
     color: $color_primary;
@@ -85,25 +85,25 @@ a {
         border-color: $color_primary;
     }
 }
-.btn.btn-primary{
-    background: $color_green_house_90_approx !important;
+.btn.btn-primary {
+    background: $color_green_house_90_approx;
 }
 .btn-primary {
     background: $color_green_house_90_approx;
     &:hover {
-        background: $color_primary !important;
+        background: $color_primary;
     }
     &:focus {
         &:active {
             color: $white;
-            background-color: $color_green_house_90_approx !important;
+            background-color: $color_green_house_90_approx;
         }
     }
     &:focus {
-        background: $color_primary !important;
+        background: $color_primary;
     }
     &:active {
-        background: $color_primary !important;
+        background: $color_primary;
     }
 }
 #header {
@@ -211,7 +211,7 @@ a {
 .header-main {
     background: $color_secondary;
 }
-.Topbarsdiv{
+.Topbarsdiv {
     background: $color_primary;
     border-top: 3px solid $color_secondary;
     padding: 8px
@@ -702,7 +702,7 @@ table.flexible {
         background: $color_plum_approx;
     }
 }
-.usermenu .moodle-actionmenu .dropdown-menu a.dropdown-item{
+.usermenu .moodle-actionmenu .dropdown-menu a.dropdown-item {
     background: $color_primary;
 }
 .custom-login-page .loginbox {
@@ -956,25 +956,25 @@ table.flexible {
     }
 }
 #page-course-management .dropdown .dropdown-menu a {
-    padding: .25rem 1.5rem!important;
+    padding:.25rem 1.5rem;
     background: $color_primary;
     &:hover {
         background: $color_secondary;
     }
 }
 @media (max-width: 767px) and (min-width: 320px) {
+    .container.headerfiles {
+        background: $color_primary;
+    }
+    .header-main{
+        background: $color_primary;
+    }
+}
+@media (max-width: 991px) and (min-width:768px) {
     .container.headerfiles{
         background: $color_primary;
     }
-    .header-main {
+}
+th {
     background: $color_primary;
-}
-}
-@media (max-width: 991px) and (min-width: 768px) {
-    .container.headerfiles{
-        background: $color_primary;
-    }
-}    
-th{
-    background: $color_primary !important;
 }

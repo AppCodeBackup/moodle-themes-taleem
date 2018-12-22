@@ -53,9 +53,12 @@ class theme_taleem_core_renderer extends theme_boost\output\core_renderer {
         $dashboard = get_string('myhome');
         $profile = get_string('profile');
         $logout = get_string('logout');
-
         $content = '<li class="dropdown no-divider"><a class="dropdown-toggle"
-        data-toggle="dropdown" href="#">'.$uname.'<i class="fa fa-chevron-down"></i><span class="caretup"></span></a><ul class="dropdown-menu"><li><a href="'.$dlink.'">'.$dashboard.'</a></li><li><a href="'.$plink.'">'.$profile.'</a></li><li><a href="'.$lo.'">'.$logout.'</a></li></ul></li>';
+        data-toggle="dropdown" href="#">'.$uname.'
+        <i class="fa fa-chevron-down"></i><span class="caretup">
+        </span></a><ul class="dropdown-menu"><li>
+        <a href="'.$dlink.'">'.$dashboard.'</a></li>
+        <li><a href="'.$plink.'">'.$profile.'</a></li><li><a href="'.$lo.'">'.$logout.'</a></li></ul></li>';
 
         return $content;
     }
@@ -79,8 +82,8 @@ class theme_taleem_core_renderer extends theme_boost\output\core_renderer {
         }
         $context->logourl = $url;
         $context->sitename = format_string($SITE->fullname, true, ['
-            context' => context_course::instance(SITEID), "
-            escape" => false]);
+        context' => context_course::instance(SITEID), "
+        escape" => false]);
         $maincontent = $this->render_from_template('theme_taleem/login_form', $context);
         return $maincontent;
     }

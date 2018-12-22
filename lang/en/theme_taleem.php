@@ -27,19 +27,7 @@ $string['about'] = 'About';
 $string['aboutus'] = 'About Us';
 $string['pluginname'] = 'Taleem';
 $string['address'] = 'Address';
-$string['choosereadme'] = '<div class="clearfix"><div class="theme_screenshot">
-<img class=img-polaroid src="taleem/pix/screenshot.jpg" />
-<h3>Theme Credits</h3>
-<p>
-<h3>Moodle Taleem theme</h3>
-<p>
-This theme is based on the Boost based Moodle theme.
-</p>
-<p>
-Authors: VWThemes<br>
-Contact: info@vwthemes.com<br>
-Website: <a href="http://www.vwthemes.com/moodle-themes">www.vwthemes.com/moodle-themes</a><br>
-</p>';
+$string['choosereadme'] = '<div class="clearfix"><div class="theme_screenshot"><img class=img-polaroid src="taleem/pix/screenshot.jpg"/><h3>Theme Credits</h3><p><h3>Moodle Taleem theme</h3><p>This theme is based on the Boost based Moodle theme.</p><p>Authors: VWThemes<br>Contact: info@vwthemes.com<br>Website: <a href="http://www.vwthemes.com/moodle-themes">www.vwthemes.com/moodle-themes</a><br></p>';
 $string['configtitle'] = 'Taleem';
 $string['connectus'] = 'Connect with us';
 $string['contact'] = 'Contact';
@@ -61,10 +49,9 @@ $string['footerheading'] = 'Footer Blocks';
 $string['topbarheading'] = 'Top Blocks';
 $string['footerlogo'] = 'Footer Logo';
 $string['footerblklogo'] = 'Enable Footer Logo';
-$string['footerlogodesc'] = 'Please upload your custom footer logo here if you want to add it to the footer.
-                       <br>The image should be 80px high and any reasonable width (minimum:205px) that suits.';
+$string['footerlogodesc'] = 'Please upload your custom footer logo here if you want to add it to the footer.<br>The image should be 80px high and any reasonable width (minimum:205px) that suits.';
 $string['topbarnote'] = 'Topbarphone';
-$string['topbarnotedesc'] ='Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.Please give the either language key or text.For ex: lang:display or Display';
+$string['topbarnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.Please give the either language key or text.For ex: lang:display or Display';
 $string['footnote'] = 'Footnote';
 $string['footnotedefault'] = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and tronic typesetting, sheets taining Lorem Ipsum passages.';
 $string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.Please give the either language key or text.For ex: lang:display or Display';
@@ -102,8 +89,7 @@ $string['slidebuttonurl'] = 'Slide button link';
 $string['slidebuttonurldesc'] = 'Enter the target destination of the slide\'s image button link';
 
 $string['slidebutton'] = 'Slider button';
-$string['slidebuttondesc'] = 'Enter the target destination of the slide\'s image button text,
-either language key or Text.For ex: lang:display or Display';
+$string['slidebuttondesc'] = 'Enter the target destination of the slide\'s image button text,either language key or Text.For ex: lang:display or Display';
 $string['toggleslideshow'] = 'Slide show display';
 $string['toggleslideshowdesc'] = 'Choose if you wish to hide or show the slide show.';
 $string['twurl'] = 'Twitter';
@@ -122,11 +108,7 @@ $string['footerbtitle2default'] = 'Quick Links';
 $string['footerbtitle3default'] = 'Follow Us';
 $string['footerbtitle4default'] = 'Contact';
 $string['footerblink'] = 'Footer Block Link';
-$string['footerblink2default'] = 'lang:aboutus|http://www.example.com/about-us.php
-lang:termsofuse|http://www.example.com/terms-of-use.php
-lang:faq|http://www.example.com/faq.php
-lang:support|http://www.example.com/support.php
-lang:contact|http://www.example.com/contact.php';
+$string['footerblink2default'] = 'lang:aboutus|http://www.example.com/about-us.php lang:termsofuse|http://www.example.com/terms-of-use.php lang:faq|http://www.example.com/faq.php lang:support|http://www.example.com/support.php lang:contact|http://www.example.com/contact.php';
 $string['footerblink_desc'] = 'You can configure a Footer Block Links here to be shown by themes. Each line consists of some menu text either language key or text, a link URL (optional),separated by pipe characters.For example:
 <pre>
 lang:moodlecommunity|https://moodle.org
@@ -150,8 +132,7 @@ $string['mediaicon4'] = 'fa fa-pinterest-p';
 $string['default_color'] = 'Default color scheme';
 $string['color_schemes_heading'] = 'Color Schemes';
 $string['promotedtitledefault'] = 'Our Featured courses';
-$string['promotedtitledesc'] = 'Please give the Our Featured Course block title,
-either language key or Text.For ex: lang:display or Display';
+$string['promotedtitledesc'] = 'Please give the Our Featured Course block title, either language key or Text.For ex: lang:display or Display';
 $string['pcourseenable'] = 'Enable Our Featured courses';
 $string['login'] = 'Login';
 $string['link'] = 'Link';
@@ -179,8 +160,7 @@ $string['termsofuse'] = 'Terms of use';
 $string['faq'] = 'FAQ';
 $string['support'] = 'Support';
 $string['copyright'] = 'Copyright';
-$string['copyright_default'] = '<p class="text-center">Copyright &copy; 2018 - Developed by
-            <a href="http://www.vwthemes.com/moodle-themes">vwthemes</a>.Powered by <a href="https://moodle.org">vwthemes</a></p>';
+$string['copyright_default'] = '<p class="text-center">Copyright &copy; 2018 - Developed by<a href="http://www.vwthemes.com/moodle-themes">vwthemes</a>.Powered by <a href="https://moodle.org">vwthemes</a></p>';
 $string['footeremail'] = 'E-mail:';
 $string['Dingley'] = "Dingley";
 $string['dark_cyan'] = "Dark Cyan";

@@ -14,7 +14,7 @@ Taleem is a fully responsive Moodle theme well suited for Universities,Schools &
 
 Supported moodle versions
 ============================
-Compatible with Moodle 3.2+
+Compatible with Moodle 3.6+
 
 Taleem theme - Installation steps
 ============================

@@ -1,5 +1,4 @@
-// This file is part of Moodle - http://moodle.org/
-//
+// This file is part of Moodle - http://moodle.org//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -19,18 +18,15 @@
  * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+ /*eslint linebreak-style: ["error", "unix"]*/
 
 (function($) {
     var img = $("#header").find('.avatar').find('img[src$="/u/f2"]');
     var src = img.attr('src');
     img.attr('src', src + '_white');
-
-    /*  ------- Check navbar button status -------- */
     if ($("#header .navbar button").attr('aria-expanded') === "true") {
         $("#header .navbar").find('button').addClass('is-active');
     }
-
-    /*  ------ Event for change the drawer navbar style  ------ */
     $("#header .navbar button").click(function() {
         var $this = $(this);
         setTimeout(function() {
