@@ -17,6 +17,23 @@
 {{!
     @template theme_taleem/footer.
     Taleem footer layout template.
+
+    Context variables required for this template:
+    * sitename - The name of the site
+    * output - The core renderer for the page
+    * bodyattributes - attributes for the body tag as a string of html attributes
+
+    Example context (json):
+    {
+        "sitename": "Moodle",
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Test page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headings make html validators happier</h1>"
+         },
+         "bodyattributes":""
+    }
 }}
 {{#blockarrange}}
     <div class="Topbarsdiv topbar-inner">
@@ -24,66 +41,63 @@
             <div class="row">
                 <div class="col-md-3 col-sm-4 col-lg-2 topbar-email">
                     <div class="topbar-contact">    
-                        {{#phoneno}}
-                            <p><i class="fa fa-phone-square"></i> {{phoneno}}</p>
-                        {{/phoneno}}
+                        {{#footerfooterphoneno}}
+                            <p><i class="fa fa-footerphones-square"></i> {{footerfooterphoneno}}</p>
+                        {{/footerfooterphoneno}}
                     </div>
                 </div>
 
                 <div class="col-md-3 col-sm-4 col-lg-3 topbar-email">
                     <div class="topbar-contact">
-                        {{#emailid}}
-                            <p><i class="fa fa-envelope"></i> <a class="mail-link" href="mailto:{{emailid}}">{{emailid}}</a>
+                        {{#footeremailid}}
+                            <p><i class="fa fa-envelope"></i> <a class="mail-link" href="mailto:{{footeremailid}}">{{footeremailid}}</a>
                             </p>
-                        {{/emailid}}
+                        {{/footeremailid}}
                     </div>
                 </div>
           
                 <div class="col-md-6 col-sm-4 col-lg-7 media-icon">
                     <div class="social-media">
-                            {{# fburl}}
-                                <a href="{{fburl}}" target="_blank">
+                            {{# fburls}}
+                                <a href="{{fburls}}" target="_blank">
                                     <span class="media-icon">
                                     <i class="fa {{fb}} topbaricon"></i>
                                     </span>
                                 </a>
-                            {{/ fburl}}
+                            {{/ fburls}}
 
-                            {{# twurl}}
-                                <a href="{{twurl}}" target="_blank">
+                            {{# twurls}}
+                                <a href="{{twurls}}" target="_blank">
                                     <span class="media-icon">
                                     <i class="fa {{tw}} topbaricon"></i>
                                     </span>
                                 </a>
-                            {{/ twurl}}
+                            {{/ twurls}}
 
-                            {{# gpurl}}
+                            {{# gpurls}}
  
-                                <a href="{{gpurl}}" target="_blank">
+                                <a href="{{gpurls}}" target="_blank">
                                     <span class="media-icon">
                                     <i class="fa {{gp}} topbaricon"></i>
                                     </span>
                                 </a>
 
-                            {{/ gpurl}}
+                            {{/ gpurls}}
 
-                            {{# pinurl}}
-                                <a href="{{pinurl}}" target="_blank">
+                            {{# pinurls}}
+                                <a href="{{pinurls}}" target="_blank">
                                    <span class="media-icon">
                                    <i class="fa {{pi}} topbaricon"></i>
                                    </span>
                                 </a>
-                            {{/ pinurl}}
+                            {{/ pinurls}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-{{/blockarrange}}
-
-
-
-<style>
+    <div>
+    <style scoped>
 .col-md-6.col-sm-4.col-lg-7.media-icon {
     text-align: right;
 }
@@ -129,3 +143,5 @@ i.fa.fa-pinterest-p.topbaricon {
     }
 }
 </style>
+</div>
+{{/blockarrange}}

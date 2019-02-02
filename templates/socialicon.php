@@ -20,7 +20,7 @@
  * Moodle's new Boost theme engine
  *
  * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright   2018 VWThemes, vwthemes.com/lms-themes
  * @author      VWThemes
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -55,51 +55,51 @@ defined('MOODLE_INTERNAL') || die();
                 {{# block3}}
                 <div class="{{colclass}}">
                     <div class="social-media">
-                        <h4>{{footerbtitle3}}</h4>
+                        <h4>{{footercolumn3title}}</h4>
                         <ul>
-                            {{# fburl}}
+                            {{# fburls}}
                             <li class="smedia-01">
-                                <a href="{{fburl}}" target="_blank">
+                                <a href="{{fburls}}" target="_blank">
                                     <span class="media-icon">
                                     <i class="fa {{fb}}"></i>
                                     </span>
                                     <span class="media-name">{{fbn}}</span>
                                 </a>
                             </li>
-                            {{/ fburl}}
+                            {{/ fburls}}
 
-                            {{# twurl}}
+                            {{# twurls}}
                             <li class="smedia-02">
-                                <a href="{{twurl}}" target="_blank">
+                                <a href="{{twurls}}" target="_blank">
                                     <span class="media-icon">
                                     <i class="fa {{tw}}"></i>
                                     </span>
                                     <span class="media-name">{{twn}}</span>
                                 </a>
                             </li>
-                            {{/ twurl}}
+                            {{/ twurls}}
 
-                            {{# gpurl}}
+                            {{# gpurls}}
                             <li class="smedia-03">
-                                <a href="{{gpurl}}" target="_blank">
+                                <a href="{{gpurls}}" target="_blank">
                                     <span class="media-icon">
                                     <i class="fa {{gp}}"></i>
                                     </span>
                                     <span class="media-name">{{gpn}}</span>
                                 </a>
                             </li>
-                            {{/ gpurl}}
+                            {{/ gpurls}}
 
-                            {{# pinurl}}
+                            {{# pinurls}}
                             <li class="smedia-04">
-                                <a href="{{pinurl}}" target="_blank">
+                                <a href="{{pinurls}}" target="_blank">
                                    <span class="media-icon">
                                    <i class="fa {{pi}}"></i>
                                    </span>
                                    <span class="media-name">{{pin}}</span>
                                 </a>
                             </li>
-                            {{/ pinurl}}
+                            {{/ pinurls}}
                         </ul>
                     </div>
                 </div>

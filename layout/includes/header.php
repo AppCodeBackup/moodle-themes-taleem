@@ -17,7 +17,7 @@
 /**
  * Contains the header blocks.
  * @package    theme_taleem
- * @copyright  2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright  2018 VWThemes, vwthemes.com/lms-themes
  * @author     VWThemes
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -41,7 +41,7 @@ $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
 $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
-$logo = theme_taleem_get_logo_url();
+$logo = theme_taleem_frontpage_logo_url();
 $surl = new moodle_url('/course/search.php');
 
 $templatecontext = [

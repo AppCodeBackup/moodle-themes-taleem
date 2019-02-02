@@ -16,6 +16,33 @@
 }}
 {{!
     Page header.
+
+    Context variables required for this template:
+    * sitename - The name of the site
+    * output - The core renderer for the page
+    * bodyattributes - attributes for the body tag as a string of html attributes
+    * sidepreblocks - HTML for the blocks
+    * hasblocks - true if there are blocks on this page
+    * navdraweropen - true if the nav drawer should be open on page load
+    * regionmainsettingsmenu - HTML for the region main settings menu
+    * hasregionmainsettingsmenu - There is a region main settings menu on this page.
+
+    Example context (json):
+    {
+        "sitename": "Moodle",
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Test page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headings make html validators happier</h1>"
+         },
+        "bodyattributes":"",
+        "sidepreblocks": "<h2>Blocks html goes here</h2>",
+        "hasblocks":true,
+        "navdraweropen":true,
+        "regionmainsettingsmenu": "",
+        "hasregionmainsettingsmenu": false
+    }
 }}
 
 {{>theme_taleem/navbar}}
@@ -27,10 +54,14 @@
       <div class="col-md-2 header-logo">
         <div class="header-logo">
           <a class="navbar-brand" href="{{{ config.wwwroot }}}/?redirect=0">
-            <img src="{{logo}}" width="183" height="67" alt="Taleem">
+          {{#logo}}
+            <img src= "{{logo}}" width="183" height="67" alt="Taleem">
+          {{/logo}}
+          {{^logo}}
+            <img src= "{{logo}}" width="183" height="67" alt="Taleem">
+          {{/logo}}
           </a>
         </div>
-      
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

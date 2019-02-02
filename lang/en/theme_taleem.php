@@ -18,28 +18,54 @@
  * Strings for component 'theme_taleem', language 'en'
  *
  * @package   theme_taleem
- * @copyright 2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright 2018 VWThemes, vwthemes.com/lms-themes
  * @author    VWThemes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// ------------ We Offer ------------
+$string['weoffercolor'] = 'Section background Color';
+$string['weoffercolordesc'] = 'This option will give background color to section';
+$string['theme_taleem_weofferblock'] = 'We Offer Section';
+$string['weofferheading'] = 'We Offer';
+$string['theme_taleempro_weofferblock'] = 'We Offer Setting';
+$string['weoffertitle'] = 'Main Heading';
+$string['weoffertitledesc'] = '';
+$string['weofferno'] = 'No of Tabs To Display';
+$string['weoffernodesc'] = '';
+$weofferno= get_config('theme_taleempro', 'weofferno');
+for($i= 1; $i<= $weofferno; $i++)
+{
+    $string['weoffertabtitle'.$i] = 'Tab Title '.$i;
+    $string['weoffertabtext'.$i] = 'Tab Text '.$i;
+    $string['weofferimagetitle'.$i] = 'Tab Image '.$i;
+}
+$string['fontsselect'] = 'Front Page Font Select';
+$string['fontsselectdesc'] = '';
+$string['Roboto'] = 'Roboto';
+$string['Open Sans'] = 'Open Sans';
+$string['Montserrat'] = 'Montserrat';
+$string['Nunito'] = 'Nunito';
+$string['PT Sans'] = 'PT Sans';
+$string['green'] = 'Green';
+
 $string['about'] = 'About';
 $string['aboutus'] = 'About Us';
 $string['pluginname'] = 'Taleem';
-$string['address'] = 'Address';
-$string['choosereadme'] = '<div class="clearfix"><div class="theme_screenshot"><img class=img-polaroid src="taleem/pix/screenshot.jpg"/><h3>Theme Credits</h3><p><h3>Moodle Taleem theme</h3><p>This theme is based on the Boost based Moodle theme.</p><p>Authors: VWThemes<br>Contact: info@vwthemes.com<br>Website: <a href="http://www.vwthemes.com/moodle-themes">www.vwthemes.com/moodle-themes</a><br></p>';
+$string['footeraddress'] = 'Footer Address';
+$string['choosereadme'] = '<div class="clearfix"><div class="theme_screenshot"><img class=img-polaroid src="taleem/pix/screenshot.jpg"/><h3>Theme Credits</h3><p><h3>Taleem theme</h3><p>This theme is based on the Boost based Moodle theme.</p><p>Authors: VWThemes<br>Contact: info@vwthemes.com<br>Website: <a href="http://www.vwthemes.com/lms-themes">www.vwthemes.com/lms-themes</a><br></p>';
 $string['configtitle'] = 'Taleem';
 $string['connectus'] = 'Connect with us';
 $string['contact'] = 'Contact';
 $string['customcss'] = 'Custom CSS';
 $string['customcssdesc'] = 'Whatever CSS rules you add to this textarea will be reflected in every page, making for easier customization of this theme.';
-$string['defaultaddress'] = '616 Thatcher Dr.Eden Prairie, MN 55347';
-$string['defaultemailid'] = 'info@vwtheme.com';
-$string['defaultphoneno'] = '(000) 123-456';
-$string['emailid'] = 'Email';
-$string['fburl'] = 'Facebook';
-$string['fburl_default'] = 'https://www.facebook.com/yourfacebookid';
-$string['fburldesc'] = 'The Facebook url of your organisation.';
+$string['defaultfooteraddress'] = '616 Thatcher Dr.Eden Prairie, MN 55347';
+$string['defaultfooteremailid'] = 'support@vwthemes.com';
+$string['defaultfooterfooterphoneno'] = '860-229-7118';
+$string['footeremailid'] = 'Email';
+$string['fburls'] = 'Facebook';
+$string['fburls_default'] = 'https://www.facebook.com/yourfacebookid';
+$string['fburlsdesc'] = 'The Facebook url of your organisation.';
 $string['pcourses'] = 'Our Featured Courses';
 $string['pcoursesdesc'] = 'Please give the Our Featured courses id should separated by comma.';
 $string['promotedcoursesheading'] = 'Our Featured Courses';
@@ -47,18 +73,18 @@ $string['footbgimg'] = 'Background Image';
 $string['footbgimgdesc'] = 'Background Image size should be following size 1345 X 517';
 $string['footerheading'] = 'Footer Blocks';
 $string['topbarheading'] = 'Top Blocks';
-$string['footerlogo'] = 'Footer Logo';
-$string['footerblklogo'] = 'Enable Footer Logo';
-$string['footerlogodesc'] = 'Please upload your custom footer logo here if you want to add it to the footer.<br>The image should be 80px high and any reasonable width (minimum:205px) that suits.';
-$string['topbarnote'] = 'Topbarphone';
+$string['footerlogos'] = 'Footer Logo';
+$string['footerlogos'] = 'Enable Footer Logo';
+$string['footerlogosdesc'] = 'Please upload your custom footer logo here if you want to add it to the footer.<br>The image should be 80px high and any reasonable width (minimum:205px) that suits.';
+$string['topbarnote'] = 'Topbarfooterphones';
 $string['topbarnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.Please give the either language key or text.For ex: lang:display or Display';
-$string['footnote'] = 'Footnote';
-$string['footnotedefault'] = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and tronic typesetting, sheets taining Lorem Ipsum passages.';
-$string['footnotedesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.Please give the either language key or text.For ex: lang:display or Display';
+$string['footertexts'] = 'footertexts';
+$string['footertextsdefault'] = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and tronic typesetting, sheets taining Lorem Ipsum passages.';
+$string['footertextsdesc'] = 'Whatever you add to this textarea will be displayed in the footer throughout your Moodle site.Please give the either language key or text.For ex: lang:display or Display';
 $string['frontpageheading'] = 'Front page';
-$string['gpurl'] = 'Google+';
-$string['gpurl_default'] = 'https://www.google.com/+yourgoogleplusid';
-$string['gpurldesc'] = 'The Google+ url of your organisation.';
+$string['gpurls'] = 'Google+';
+$string['gpurls_default'] = 'https://www.google.com/+yourgoogleplusid';
+$string['gpurlsdesc'] = 'The Google+ url of your organisation.';
 $string['headerheading'] = 'Header';
 $string['logo'] = 'Logo';
 $string['logodesc'] = 'Please upload your custom logo here if you want to add it to the header.
@@ -67,22 +93,22 @@ $string['numberofslides'] = 'Number of slides';
 $string['numberofslides_desc'] = 'Number of slides on the slider.';
 $string['numberoftmonials'] = 'Number of Testimonials';
 $string['numberoftmonials_desc'] = 'Number of Testimonials on the Home Page.';
-$string['phoneno'] = 'Phone No';
-$string['pinurl'] = 'Pinterest';
-$string['pinurl_default'] = 'https://in.pinterest.com/yourpinterestname/';
-$string['pinurldesc'] = 'The Pinterest url of your organisation.';
+$string['footerfooterphoneno'] = 'Footer Phone No';
+$string['pinurls'] = 'Pinterest';
+$string['pinurls_default'] = 'https://in.pinterest.com/yourpinterestname/';
+$string['pinurlsdesc'] = 'The Pinterest url of your organisation.';
 $string['knowmore'] = 'Know More';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
 $string['signup'] = 'Sign up';
 $string['slidecaption'] = 'Slide caption';
-$string['slidecaptiondefault'] = 'Moodle Learning Management System';
+$string['slidecaptiondefault'] = 'Learning Management System';
 $string['slidecaptiondesc'] = 'Enter the caption text to use for the slide';
 $string['slideimage'] = 'Slide image';
 $string['slideimagedesc'] = 'The image should be 1366px X 385px.';
 $string['slideno'] = 'Slide {$a->slide}';
 $string['slidenodesc'] = 'Enter the settings for slide {$a->slide}.';
-$string['slideshowdesc'] = 'This creates a slide show of up to twelve slides for you to promote important elements of your site.  The show is responsive where image height is set according to screen size.If no image is selected for a slide, then the default_slide images in the pix folder is used.';
+$string['slideshowdesc'] = 'This creates a slide show of up to twelve slides for you to promote important elements of your site.  The show is responsive where image height is set according to screen size.If no image is selected for a slide, then the default_slide images in the images folder is used.';
 $string['slideshowheading'] = 'Home Page Slider';
 $string['slideshowheadingsub'] = 'Slide show for the front page';
 $string['slidebuttonurl'] = 'Slide button link';
@@ -92,9 +118,9 @@ $string['slidebutton'] = 'Slider button';
 $string['slidebuttondesc'] = 'Enter the target destination of the slide\'s image button text,either language key or Text.For ex: lang:display or Display';
 $string['toggleslideshow'] = 'Slide show display';
 $string['toggleslideshowdesc'] = 'Choose if you wish to hide or show the slide show.';
-$string['twurl'] = 'Twitter';
-$string['twurl_default'] = 'https://twitter.com/yourtwittername';
-$string['twurldesc'] = 'The Twitter url of your organisation.';
+$string['twurls'] = 'Twitter';
+$string['twurls_default'] = 'https://twitter.com/yourtwittername';
+$string['twurlsdesc'] = 'The Twitter url of your organisation.';
 $string['themegeneralsettings'] = 'General';
 $string['patternselect'] = 'Site Color Scheme';
 $string['patternselectdesc'] = 'Select the color scheme you want to have for your site.';
@@ -104,9 +130,9 @@ $string['footerblock'] = 'Footer Block';
 
 $string['title'] = 'Title';
 $string['footerbtitle_desc'] = 'Please give the footer block title either language key or text.For ex: lang:display or Display';
-$string['footerbtitle2default'] = 'Quick Links';
-$string['footerbtitle3default'] = 'Follow Us';
-$string['footerbtitle4default'] = 'Contact';
+$string['footercolumn2titledefault'] = 'Quick Links';
+$string['footercolumn3titledefault'] = 'Follow Us';
+$string['footercolumn4titledefault'] = 'Contact';
 $string['footerblink'] = 'Footer Block Link';
 $string['footerblink2default'] = 'lang:aboutus|http://www.example.com/about-us.php lang:termsofuse|http://www.example.com/terms-of-use.php lang:faq|http://www.example.com/faq.php lang:support|http://www.example.com/support.php lang:contact|http://www.example.com/contact.php';
 $string['footerblink_desc'] = 'You can configure a Footer Block Links here to be shown by themes. Each line consists of some menu text either language key or text, a link URL (optional),separated by pipe characters.For example:
@@ -124,7 +150,6 @@ $string['smedia2'] = 'Twitter';
 $string['smedia3'] = 'Google Plus';
 $string['smedia4'] = 'Pinterest';
 
-
 $string['mediaicon1'] = 'fa fa-facebook-f';
 $string['mediaicon2'] = 'fa fa-twitter';
 $string['mediaicon3'] = 'fa fa-google-plus';
@@ -139,20 +164,6 @@ $string['link'] = 'Link';
 $string['text'] = 'Text';
 $string['icon'] = 'Icon';
 $string['loginheader'] = 'Login into your account';
-$string['marketingspotsheading'] = 'Marketing Spots';
-$string['marketingspot'] = 'Marketing Spot';
-$string['marketingspot1desc'] = 'Enter the Marketing Spot 1 block content either language key or text here.For ex: lang:display or Display';
-$string['marketingspot2desc'] = 'Enter the Marketing Spot 2 block content either language key or text here.For ex: lang:display or Display';
-$string['mspottitledesc'] = 'Enter the Marketing Spot Title either language key or Text.For ex: lang:display or Display';
-$string['mspotdescdesc'] = 'Enter the Marketing Spot Description either language key or Text.For ex: lang:display or Display';
-$string['mspot1titledefault'] = 'Multilingual';
-$string['mspot1descdefault'] = 'This is Photoshop\'s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat.';
-$string['mspot2titledefault'] = 'Online Study';
-$string['mspot2descdefault'] = 'This is Photoshop\'s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat.';
-$string['mspot3titledefault'] = 'Community Support';
-$string['mspot3descdefault'] = 'This is Photoshop\'s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat.';
-$string['mspot4titledefault'] = 'Responsive Design';
-$string['mspot4descdefault'] = 'This is Photoshop\'s version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat.';
 $string['faicondesc'] = 'Enter the name of the icon you wish to use.  List is <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_new">here</a>. Just enter what is after the "fa-".';
 
 
@@ -160,7 +171,7 @@ $string['termsofuse'] = 'Terms of use';
 $string['faq'] = 'FAQ';
 $string['support'] = 'Support';
 $string['copyright'] = 'Copyright';
-$string['copyright_default'] = '<p class="text-center">Copyright &copy; 2018 - Developed by<a href="http://www.vwthemes.com/moodle-themes">vwthemes</a>.Powered by <a href="https://moodle.org">vwthemes</a></p>';
+$string['copyright_default'] = '<p class="text-center">© 2019 - VW Education Pro Theme| Design & Developed by<a href="http://www.vwthemes.com/lms-themes">vwthemes</a>.';
 $string['footeremail'] = 'E-mail:';
 $string['Dingley'] = "Dingley";
 $string['dark_cyan'] = "Dark Cyan";
@@ -168,10 +179,11 @@ $string['lavender'] = "Lavender";
 $string['blue'] = "Blue";
 $string['warm_red'] = "Warm Red";
 $string['black'] = "Black";
-$string['default'] = "Default";
-$string['color_1'] = "Color 1";
-$string['color_2'] = "Color 2";
-$string['color_3'] = "Color 3";
-$string['color_4'] = "Color 4";
-$string['color_5'] = "Color 5";
-$string['phone'] = "Phone";
+$string['default'] = "Palatte Default";
+$string['color_1'] = "Color Palatte 1";
+$string['color_2'] = "Color Palatte 2";
+$string['color_3'] = "Color Palatte 3";
+$string['color_4'] = "Color Palatte 4";
+$string['color_5'] = "Color Palatte 5";
+$string['footerphones'] = "footerphones";
+$string['topbaremail'] = "Top Bar Email";

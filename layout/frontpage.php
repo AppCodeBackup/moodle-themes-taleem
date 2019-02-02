@@ -18,12 +18,15 @@
  * frontpage.php
  *
  * @package   theme_taleem
- * @copyright 2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright 2018 VWThemes, vwthemes.com/lms-themes
  * @author    VWThemes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
 // Get the HTML for the settings bits.
+$fontsselect = get_config('theme_taleempro', 'fontsselect');
+
 global $OUTPUT, $PAGE;
 $html = theme_taleem_get_html_for_settings($OUTPUT, $PAGE);
 
@@ -42,7 +45,11 @@ echo $OUTPUT->doctype() ?>
     <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
     <?php echo $OUTPUT->standard_head_html() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 </head>
 
 <body <?php echo $OUTPUT->body_attributes(); ?>>
@@ -62,13 +69,10 @@ echo $OUTPUT->doctype() ?>
 <?php
 $toggleslideshow = theme_taleem_get_setting('toggleslideshow');
 if ($toggleslideshow == 1) {
-    require_once(dirname(__FILE__) . '/includes/slideshow.php');
+    require_once(dirname(__FILE__) . '/includes/slider.php');
 }
 
 ?>
-<?php require_once(dirname(__FILE__) . '/includes/marketingspots.php'); ?>
-<?php echo $courserenderer->promoted_courses(); ?>
-
 <div id="page" class="container">
     <header id="page-header" class="clearfix">
         <?php echo $html->heading; ?>
@@ -98,34 +102,17 @@ if ($toggleslideshow == 1) {
     <?php echo (!empty($flatnavbar)) ? $flatnavbar : ""; ?>
 </div>
 
- <script src="<?php echo theme_taleem_theme_url(); ?>/javascript/slick.js"></script>
-<script>
-$( function() {
-    
-    if ($('body').hasClass('dir-rtl') ) {
-        var rtl = true;
-    } else {
-        var rtl = false;
-    }
-    $(".promoted_courses").slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        rtl:rtl,
-        arrows:true ,
-        swipe:false,
-        prevArrow:'#Promoted-Courses .pagenav .slick-prev',
-        nextArrow: '#Promoted-Courses .pagenav .slick-next',
-    });
-
-
-});
-</script>
-
 <?php
+    require_once(dirname(__FILE__) . '/includes/we-offer.php');
     require_once(dirname(__FILE__) . '/includes/footer.php');
     echo $footerlayout;
 ?>
 <!--E.O.Custom theme footer-->
 
+<style>
+body{
+    font-family: <?php echo $fontsselect; ?>
+}
+</style>   
 </body>
 </html>

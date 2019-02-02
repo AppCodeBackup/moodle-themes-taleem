@@ -18,7 +18,7 @@
  * topbar.php
  *
  * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright   2018 VWThemes, vwthemes.com/lms-themes
  * @author      VWThemes
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,16 +36,16 @@ function topbar_content() {
     $topbaremail = theme_taleem_get_setting('topbaremail', true);
     $topbaremail = theme_taleem_lang($topbaremail);
 
-    $fburl    = theme_taleem_get_setting('fburl');
-    $fburl    = trim($fburl);
-    $twurl    = theme_taleem_get_setting('twurl');
-    $twurl    = trim($twurl);
-    $gpurl    = theme_taleem_get_setting('gpurl');
-    $gpurl    = trim($gpurl);
-    $pinurl   = theme_taleem_get_setting('pinurl');
-    $pinurl   = trim($pinurl);
+    $fburls    = theme_taleem_get_setting('fburls');
+    $fburls    = trim($fburls);
+    $twurls    = theme_taleem_get_setting('twurls');
+    $twurls    = trim($twurls);
+    $gpurls    = theme_taleem_get_setting('gpurls');
+    $gpurls    = trim($gpurls);
+    $pinurls   = theme_taleem_get_setting('pinurls');
+    $pinurls   = trim($pinurls);
 
-    $socialurl = ($fburl != '' || $pinurl != '' || $twurl != '' || $gpurl != '') ? 1 : 0;
+    $socialurl = ($fburls != '' || $pinurls != '' || $twurls != '' || $gpurls != '') ? 1 : 0;
     $fb = get_string('mediaicon1', 'theme_taleem');
     $tw = get_string('mediaicon2', 'theme_taleem');
     $gp = get_string('mediaicon3', 'theme_taleem');
@@ -73,22 +73,22 @@ function topbar_content() {
       $tabcontent .= html_writer::end_tag('div');
 
       $tabcontent .= html_writer::start_tag('div', array('id' => '', 'class' => 'col-md-6 col-sm-4 col-lg-7 media-icon'));
-        $tabcontent .= html_writer::start_tag('a', array('href' => $fburl));
+        $tabcontent .= html_writer::start_tag('a', array('href' => $fburls));
             $tabcontent .= html_writer::start_tag('i', array('class' => $fb));
             $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
 
-        $tabcontent .= html_writer::start_tag('a', array('href' => $twurl));
+        $tabcontent .= html_writer::start_tag('a', array('href' => $twurls));
           $tabcontent .= html_writer::start_tag('i', array('class' => $tw));
           $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
 
-        $tabcontent .= html_writer::start_tag('a', array('href' => $gpurl));
+        $tabcontent .= html_writer::start_tag('a', array('href' => $gpurls));
           $tabcontent .= html_writer::start_tag('i', array('class' => $gp));
           $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');
 
-        $tabcontent .= html_writer::start_tag('a', array('href' => $pinurl));
+        $tabcontent .= html_writer::start_tag('a', array('href' => $pinurls));
           $tabcontent .= html_writer::start_tag('i', array('class' => $pi));
           $tabcontent .= html_writer::end_tag('i');
         $tabcontent .= html_writer::end_tag('a');

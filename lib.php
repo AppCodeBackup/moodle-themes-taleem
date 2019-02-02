@@ -21,85 +21,68 @@
  * Moodle's new Boost theme engine
  *
  * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright   2018 VWThemes, vwthemes.com/lms-themes
  * @author      VWThemes
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
+require_once('layout/renderers/core_renderer.php');
+require_once('layout/renderers/course_renderer.php');
 
-/**
- * Taleem main scss contents.
- * @param string $theme
- * @return string
- */
-function theme_taleem_get_main_scss_content($theme) {
-    global $CFG, $OUTPUT, $PAGE;
 
-    $scss = '';
-    $parentconfig = theme_config::load('boost');
-    $scss .= theme_boost_get_main_scss_content($parentconfig);
+function theme_taleem_render_weofferimg($p, $sliname) {
+    global $PAGE, $OUTPUT;
 
-    $themescssfile = $CFG->dirroot.'/theme/taleem/scss/preset/taleem.scss';
-    if (file_exists($themescssfile)) {
-        $scss .= file_get_contents($themescssfile);
+    $nos = theme_taleem_get_setting('weofferno');
+    $i = $p;
+    $slideimage = $OUTPUT->image_url('we-offer/weoffer'.$i, 'theme');
+
+    // Get slide image or fallback to default.
+    if (theme_taleem_get_setting($sliname)) {
+        $slideimage = $PAGE->theme->setting_file_url($sliname , $sliname);
     }
-    /*--color_scheme--*/
-    $patterns = theme_taleem_get_setting('patternselect');
-
-    if (!empty($patterns)) {
-        $filename = 'color_scheme-'.$patterns.'.scss';
-    } else {
-        $filename = 'color_scheme-default.scss';
-    }
-    if ($filename == 'color_scheme-1.scss') {
-        $scss .= file_get_contents($CFG->dirroot.'/theme/taleem/scss/preset/color_scheme-1.scss');
-
-    } else if ($filename == 'color_scheme-2.scss') {
-        $scss .= file_get_contents($CFG->dirroot.'/theme/taleem/scss/preset/color_scheme-2.scss');
-
-    } else if ($filename == 'color_scheme-3.scss') {
-        $scss .= file_get_contents($CFG->dirroot.'/theme/taleem/scss/preset/color_scheme-3.scss');
-
-    } else if ($filename == 'color_scheme-4.scss') {
-        $scss .= file_get_contents($CFG->dirroot.'/theme/taleem/scss/preset/color_scheme-4.scss');
-
-    } else {
-        // Safety fallback - maybe new installs etc.
-        $scss .= file_get_contents($CFG->dirroot . '/theme/taleem/scss/preset/color_scheme-default.scss');
-    }
-    return $scss;
+    return $slideimage;
 }
 
 /**
- * override the scss values with variables.
- * @return string
+ * Logo Image URL Fetch from theme settings
+ *
+ * @param string $type
+ * @return image $logo
  */
-function theme_taleem_get_pre_scss() {
-    global $CFG;
+function theme_taleem_frontpage_logo_url($type='header') {
+    global $OUTPUT;
+    static $theme;
+    if (empty($theme)) {
+        $theme = theme_config::load('taleem');
+    }
 
-    $scss = '';
-    $scss = theme_taleem_set_fontwww();
-    return $scss;
+    if ($type == "header") {
+        $logo = $theme->setting_file_url('logo', 'logo');
+        $logo = empty($logo) ? $OUTPUT->image_url('logo/logo', 'theme') : $logo;
+    } else if ($type == "footer") {
+        $logo = $theme->setting_file_url('footerlogos', 'footerlogos');
+        $logo = empty($logo) ? $OUTPUT->image_url('logo/footerlogos', 'theme') : $logo;
+    }
+    return $logo;
 }
-
 /**
  * Get extra scss from settings.
  * @param string $theme
  * @return string
  */
-function theme_taleem_get_extra_scss($theme) {
+function theme_taleem_get_taleem_scss($theme) {
     return !empty($theme->settings->customcss) ? $theme->settings->customcss : '';
 }
 
 /**
- * Page init functions runs every time page loads.
  * @param moodle_page $page
  * @return null
  */
 function theme_taleem_page_init(moodle_page $page) {
     $page->requires->jquery();
-    $page->requires->js('/theme/taleem/javascript/theme.js');
+    $page->requires->js('/theme/taleem/js/theme.js');
 }
 
 /**
@@ -110,7 +93,7 @@ function theme_taleem_page_init(moodle_page $page) {
  * @param string $theme
  * @return string $css
  */
-function theme_taleem_process_css($css, $theme) {
+function theme_taleem_proceed_css($css, $theme) {
     // Set the background image for the logo.
     $logo = $theme->setting_file_url('logo', 'logo');
 
@@ -146,8 +129,8 @@ function theme_taleem_pluginfile($course, $cm, $context, $filearea, $args, $forc
     if ($context->contextlevel == CONTEXT_SYSTEM) {
         if ($filearea === 'logo') {
             return $theme->setting_file_serve('logo', $args, $forcedownload, $options);
-        } else if ($filearea === 'footerlogo') {
-            return $theme->setting_file_serve('footerlogo', $args, $forcedownload, $options);
+        } else if ($filearea === 'footerlogos') {
+            return $theme->setting_file_serve('footerlogos', $args, $forcedownload, $options);
         } else if ($filearea === 'style') {
             theme_taleem_serve_css($args[1]);
         } else if ($filearea === 'pagebackground') {
@@ -160,38 +143,6 @@ function theme_taleem_pluginfile($course, $cm, $context, $filearea, $args, $forc
     } else {
         send_file_not_found();
     }
-}
-
-/**
- * Serves CSS for image file updated to styles.
- *
- * @param string $filename
- * @return string
- */
-function theme_taleem_serve_css($filename) {
-    global $CFG;
-    if (!empty($CFG->themedir)) {
-        $thestylepath = $CFG->themedir . '/taleem/style/';
-    } else {
-        $thestylepath = $CFG->dirroot . '/theme/taleem/style/';
-    }
-    $thesheet = $thestylepath . $filename;
-
-    /* http://css-tricks.com/snippets/php/intelligent-php-cache-control/ - rather than /lib/csslib.php as it is a static file who's
-      contents should only change if it is rebuilt.  But! There should be no difference with TDM on so will see for the moment if
-      that decision is a factor. */
-
-    $etagfile = md5_file($thesheet);
-    // File.
-    $lastmodified = filemtime($thesheet);
-    // Header.
-    $ifmodifiedsince = (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) ? $_SERVER['HTTP_IF_MODIFIED_SINCE'] : false);
-    $etagheader = (isset($_SERVER['HTTP_IF_NONE_MATCH']) ? trim($_SERVER['HTTP_IF_NONE_MATCH']) : false);
-
-    if ((($ifmodifiedsince) && (strtotime($ifmodifiedsince) == $lastmodified)) || $etagheader == $etagfile) {
-        theme_taleem_send_unmodified($lastmodified, $etagfile);
-    }
-    theme_taleem_send_cached_css($thestylepath, $filename, $lastmodified, $etagfile);
 }
 
 /**
@@ -214,47 +165,85 @@ function theme_taleem_send_unmodified($lastmodified, $etag) {
 }
 
 /**
- * Cached css.
- * @param string $path
+ * Serves CSS for image file updated to styles.
+ *
  * @param string $filename
- * @param integer $lastmodified
- * @param string $etag
+ * @return string
  */
-function theme_taleem_send_cached_css($path, $filename, $lastmodified, $etag) {
+function theme_taleem_serve_css($filename) {
     global $CFG;
-    require_once($CFG->dirroot . '/lib/configonlylib.php');
-    // For min_enable_zlib_compression.
-    // 60 days only - the revision may get incremented quite often.
-    $lifetime = 60 * 60 * 24 * 60;
-
-    header('Etag: "' . $etag . '"');
-    header('Content-Disposition: inline; filename="'.$filename.'"');
-    header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastmodified) . ' GMT');
-    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $lifetime) . ' GMT');
-    header('Pragma: ');
-    header('Cache-Control: public, max-age=' . $lifetime);
-    header('Accept-Ranges: none');
-    header('Content-Type: text/css; charset=utf-8');
-    if (!min_enable_zlib_compression()) {
-        header('Content-Length: ' . filesize($path . $filename));
+    if (!empty($CFG->themedir)) {
+        $thestylepath = $CFG->themedir . '/taleem/style/';
+    } else {
+        $thestylepath = $CFG->dirroot . '/theme/taleem/style/';
     }
+    $thesheet = $thestylepath . $filename;
 
-    readfile($path . $filename);
-    die;
+    $etagfile = md5_file($thesheet);
+    // File.
+    $lastmodified = filemtime($thesheet);
+    // Header.
+    $ifmodifiedsince = (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) ? $_SERVER['HTTP_IF_MODIFIED_SINCE'] : false);
+    $etagheader = (isset($_SERVER['HTTP_IF_NONE_MATCH']) ? trim($_SERVER['HTTP_IF_NONE_MATCH']) : false);
+
+    if ((($ifmodifiedsince) && (strtotime($ifmodifiedsince) == $lastmodified)) || $etagheader == $etagfile) {
+        theme_taleem_send_unmodified($lastmodified, $etagfile);
+    }
+    theme_taleem_send_cached_css($thestylepath, $filename, $lastmodified, $etagfile);
 }
 
 /**
+ * Taleem main scss contents.
+ * @param string $theme
+ * @return string
+ */
+function theme_taleem_get_content_scss($theme) {
+    global $CFG, $OUTPUT, $PAGE;
+
+    $scss = '';
+    $parentconfig = theme_config::load('boost');
+    $scss .= theme_boost_get_main_scss_content($parentconfig);
+
+    $themescssfile = $CFG->dirroot.'/theme/taleem/colorpalatte/taleem.scss';
+    if (file_exists($themescssfile)) {
+        $scss .= file_get_contents($themescssfile);
+    }
+    /*--colorpalatte--*/
+    $patterns = theme_taleem_get_setting('patternselect');
+
+    if (!empty($patterns)) {
+        $filename = 'colorpalatte'.$patterns.'.scss';
+    } else {
+        $filename = 'colorpalatte-default.scss';
+    }
+    if ($filename == 'colorpalatte1.scss') {
+        $scss .= file_get_contents($CFG->dirroot . '/theme/taleem/colorpalatte/colorpalatte-default.scss');
+    }else {
+        // Safety fallback - maybe new installs etc.
+        $scss .= file_get_contents($CFG->dirroot . '/theme/taleem/colorpalatte/colorpalatte-default.scss');
+    }
+    return $scss;
+}
+/**
+ * override the scss values with variables.
+ * @return string
+ */
+function theme_taleem_get_pre_scss() {
+    global $CFG;
+
+    $scss = '';
+    $scss = theme_taleem_set_fontwww();
+    return $scss;
+}
+/**
  * Returns an object containing HTML for the areas affected by settings.
- *
- * Do not add Clean specific logic in here, child themes should be able to
- * rely on that function just by declaring settings with similar names.
  *
  * @param renderer_base $output Pass in $OUTPUT.
  * @param moodle_page $page Pass in $PAGE.
  * @return stdClass An object with the following properties:
  *      - navbarclass A CSS class to use on the navbar. By default ''.
  *      - heading HTML to use for the heading. A logo if one is selected or the default heading.
- *      - footnote HTML to use as a footnote. By default ''.
+ *      - footertexts HTML to use as a footertexts. By default ''.
  */
 function theme_taleem_get_html_for_settings(renderer_base $output, moodle_page $page) {
     global $CFG;
@@ -271,14 +260,13 @@ function theme_taleem_get_html_for_settings(renderer_base $output, moodle_page $
         $return->heading = $output->page_heading();
     }
 
-    $return->footnote = '';
-    if (!empty($page->theme->settings->footnote)) {
-        $return->footnote = '<div class="footnote text-center">'.format_text($page->theme->settings->footnote).'</div>';
+    $return->footertexts = '';
+    if (!empty($page->theme->settings->footertexts)) {
+        $return->footertexts = '<div class="footertexts text-center">'.format_text($page->theme->settings->footertexts).'</div>';
     }
 
     return $return;
 }
-
 /**
  * Loads the CSS Styles and put the font path
  *
@@ -309,40 +297,17 @@ function theme_taleem_pre_css_set_fontwww($css) {
 }
 
 /**
- * Logo Image URL Fetch from theme settings
- *
- * @param string $type
- * @return image $logo
- */
-function theme_taleem_get_logo_url($type='header') {
-    global $OUTPUT;
-    static $theme;
-    if (empty($theme)) {
-        $theme = theme_config::load('taleem');
-    }
-
-    if ($type == "header") {
-        $logo = $theme->setting_file_url('logo', 'logo');
-        $logo = empty($logo) ? $OUTPUT->image_url('home/logo', 'theme') : $logo;
-    } else if ($type == "footer") {
-        $logo = $theme->setting_file_url('footerlogo', 'footerlogo');
-        $logo = empty($logo) ? $OUTPUT->image_url('home/footerlogo', 'theme') : $logo;
-    }
-    return $logo;
-}
-
-/**
  * Renderer the slider images.
  * @param integer $p
  * @param string $sliname
  * @return null
  */
-function theme_taleem_render_slideimg($p, $sliname) {
+function theme_taleem_render_front_page_slideimg($p, $sliname) {
     global $PAGE, $OUTPUT;
 
     $nos = theme_taleem_get_setting('numberofslides');
     $i = $p % 3;
-    $slideimage = $OUTPUT->image_url('home/slide'.$i, 'theme');
+    $slideimage = $OUTPUT->image_url('slider/slide'.$i, 'theme');
 
     // Get slide image or fallback to default.
     if (theme_taleem_get_setting($sliname)) {
@@ -379,6 +344,36 @@ function theme_taleem_get_setting($setting, $format = false) {
 }
 
 /**
+ * Cached css.
+ * @param string $path
+ * @param string $filename
+ * @param integer $lastmodified
+ * @param string $etag
+ */
+function theme_taleem_send_cached_css($path, $filename, $lastmodified, $etag) {
+    global $CFG;
+    require_once($CFG->dirroot . '/lib/configonlylib.php');
+    // For min_enable_zlib_compression.
+    // 60 days only - the revision may get incremented quite often.
+    $lifetime = 60 * 60 * 24 * 60;
+
+    header('Etag: "' . $etag . '"');
+    header('Content-Disposition: inline; filename="'.$filename.'"');
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $lastmodified) . ' GMT');
+    header('Expires: ' . gmdate('D, d M Y H:i:s', time() + $lifetime) . ' GMT');
+    header('Pragma: ');
+    header('Cache-Control: public, max-age=' . $lifetime);
+    header('Accept-Ranges: none');
+    header('Content-Type: text/css; charset=utf-8');
+    if (!min_enable_zlib_compression()) {
+        header('Content-Length: ' . filesize($path . $filename));
+    }
+
+    readfile($path . $filename);
+    die;
+}
+
+/**
  * Return the current theme url
  *
  * @return string
@@ -394,7 +389,7 @@ function theme_taleem_theme_url() {
  * @param string $menuname Footer block link name.
  * @return string The Footer links are return.
  */
-function theme_taleem_generate_links($menuname = '') {
+function theme_taleem_create_urls($menuname = '') {
     global $CFG, $PAGE;
     $htmlstr = '';
     $menustr = theme_taleem_get_setting($menuname);
@@ -410,7 +405,7 @@ function theme_taleem_generate_links($menuname = '') {
                 continue;
             }
             if (empty($lurl)) {
-                $lurl = 'javascript:void(0);';
+                $lurl = 'js:void(0);';
             }
 
             $pos = strpos($lurl, 'http');
@@ -461,7 +456,7 @@ function theme_taleem_strip_html_tags( $text ) {
             '@<noscript[^>]*?.*?</noscript>@siu',
             '@<noembed[^>]*?.*?</noembed>@siu',
             // Add line breaks before and after blocks.
-            '@</?((address)|(blockquote)|(center)|(del))@iu',
+            '@</?((footeraddress)|(blockquote)|(center)|(del))@iu',
             '@</?((div)|(h[1-9])|(ins)|(isindex)|(p)|(pre))@iu',
             '@</?((dir)|(dl)|(dt)|(dd)|(li)|(menu)|(ol)|(ul))@iu',
             '@</?((table)|(th)|(td)|(caption))@iu',
@@ -481,7 +476,6 @@ function theme_taleem_strip_html_tags( $text ) {
 
 /**
  * Cut the Course content.
- *
  * @param string $str
  * @param integer $n
  * @param char $end_char

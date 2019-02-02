@@ -21,7 +21,7 @@
  * Moodle's new Boost theme engine
  *
  * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright   2018 VWThemes, vwthemes.com/lms-themes
  * @author      VWThemes
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,13 +29,13 @@
 defined('MOODLE_INTERNAL') || die;
 
 // The current module version (Date: YYYYMMDDXX).
-$plugin->version   = 2018122101;
+$plugin->version   = 2019020505;
 
 // Version's maturity level.
 $plugin->maturity = MATURITY_STABLE;
 
 // Plugin release version.
-$plugin->release = 'v1.1.1';
+$plugin->release = 'v1.1.5';
 
 // Requires this Moodle version(+3.2).
 $plugin->requires  = 2016120500;

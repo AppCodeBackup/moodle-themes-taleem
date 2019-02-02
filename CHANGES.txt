@@ -1,3 +1,30 @@
-New in v1.1.1
-============
--Initial Version Release
+New in v1.1.3
+==============
+- FIX: Fixed the issue of indentation in Taleem.css 
+- FIX: Fixed the issue of indentation in color_scheme-default.scss
+- FIX: Fixed the error Example context missing in custom_menu_item.mustache
+- FIX: Fixed the error Example context missing in topbar.mustache
+- FIX: Fixed the error Example context missing & HTML Validation in navbar.mustache
+- FIX: Fixed the error Example context missing & inlinestyle error in navbar.mustache
+- FIX: Fixed the error ESLint error Missing semicolon in login_form.mustache
+- FIX: Fixed the error Example context missing & HTML Validation error in header.mustache
+- FIX: Fixed the error HTML Validation & inlinestyle error in columns2.mustache
+
+
+New in v1.1.4
+==============
+- FIX: Fixed the issue of indentation in colorpalattedefault.scss 
+- NEW: Added A New Section of we offer
+- NEW: Added A New function of We offer section in lib.php
+- NEW: Added A New functionality To Change Font Family In Theme
+- NEW: Added A New Screenshot Image & Banner Images
+
+
+New in v1.1.5
+==============
+- FIX: Fixed the issue of indentation in columns1.php
+- FIX: Fixed the issue of indentation in theme_taleem.php
+- FIX: Fixed the issue of indentation in columns2.php
+- FIX: Fixed the issue of indentation in footer.php
+- FIX: Fixed the issue of indentation in we-offer.php
+- FIX: Fixed the issue of indentation in course_renderer.php

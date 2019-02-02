@@ -15,51 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The maintenance layout.
+ * A login page layout for the boost theme.
  *
- * @package   theme_taleem
- * @copyright 2018 VWThemes, vwthemes.com/moodle-themes
- * @author    VWThemes
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     theme_taleem
+ * @copyright   2018 VWThemes, vwthemes.com/lms-themes
+ * @author      VWThemes
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-// Get the HTML for the settings bits.
-$html = theme_taleem_get_html_for_settings($OUTPUT, $PAGE);
+$templatecontext = [
+    // We cannot pass the context to format_string, this layout can be used during
+    // installation. At that stage database tables do not exist yet.
+    'sitename' => format_string($SITE->shortname, true, ["escape" => false]),
+    'output' => $OUTPUT
+];
 
-echo $OUTPUT->doctype() ?>
-<html <?php echo $OUTPUT->htmlattributes(); ?>>
-<head>
-    <title><?php echo $OUTPUT->page_title(); ?></title>
-    <link rel="shortcut icon" href="<?php echo $OUTPUT->favicon(); ?>" />
-    <?php echo $OUTPUT->standard_head_html() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body <?php echo $OUTPUT->body_attributes(); ?>>
-
-<?php echo $OUTPUT->standard_top_of_body_html() ?>
-
-<div id="page" style="background: #fff;">
-
-    <header id="page-header" class="clearfix">
-        <div class="container">
-                <?php echo $html->heading; ?>
-        </div>
-    </header>
-
-    <div class="container">
-        <div id="page-content" class="row">
-            <section id="region-main" class="col-xs-12">
-                <?php echo $OUTPUT->main_content(); ?>
-            </section>
-        </div>
-    </div>
-
-</div>
-
-<?php  require_once(dirname(__FILE__) . '/includes/footer.php');  ?>
-
-</body>
-</html>
+echo $OUTPUT->render_from_template('theme_taleem/maintenance', $templatecontext);

@@ -18,7 +18,7 @@
  * The embedded layout.
  *
  * @package   theme_taleem
- * @copyright 2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright 2018 VWThemes, vwthemes.com/lms-themes
  * @author    VWThemes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

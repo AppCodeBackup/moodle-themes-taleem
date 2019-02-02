@@ -21,7 +21,7 @@
  * Moodle's new Boost theme engine
  *
  * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/moodle-themes
+ * @copyright   2018 VWThemes, vwthemes.com/lms-themes
  * @author      VWThemes
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -49,17 +49,17 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 
 $THEME->prescsscallback = 'theme_taleem_get_pre_scss';
 
-$THEME->extrascsscallback = 'theme_taleem_get_extra_scss';
+$THEME->extrascsscallback = 'theme_taleem_get_taleem_scss';
 
 $THEME->csstreepostprocessor = 'theme_taleem_css_tree_post_processor';
 
 $THEME->scss = function($theme) {
-    return theme_taleem_get_main_scss_content($theme);
+    return theme_taleem_get_content_scss($theme);
 };
 
 $no = get_config('theme_taleem', 'patternselect'); // Selected theme pattern no returned.
 
-$THEME->csspostprocess = 'theme_taleem_process_css';
+$THEME->csspostprocess = 'theme_taleem_proceed_css';
 
 $THEME->layouts = array(
     // Most backwards compatible layout without the blocks - this is the layout used by default.

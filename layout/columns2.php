@@ -18,6 +18,7 @@
  * A two column layout for the boost theme.
  *
  * @package   theme_taleem
+ * @copyright 2018 VWThemes, vwthemes.com/lms-themes
  * @author    VWThemes
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -43,36 +44,40 @@ $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 
 echo (!empty($flatnavbar)) ? $flatnavbar : "";
 
-$logo = theme_taleem_get_logo_url();
+$logo = theme_taleem_frontpage_logo_url();
 $surl = new moodle_url('/course/search.php');
 
-$footerlogo = !empty(theme_taleem_get_setting('footerblklogo')) ? 1 : 0;
+$footerlogos = !empty(theme_taleem_get_setting('footerlogos')) ? 1 : 0;
 
-$footnote = !empty(theme_taleem_get_setting('footnote')) ? theme_taleem_get_setting('footnote', 'format_text') : '';
-$footnote = theme_taleem_lang($footnote);
+$footertexts = !empty(theme_taleem_get_setting('footertexts')) ? 
+theme_taleem_get_setting('footertexts', 'format_text') : '';
+$footertexts = theme_taleem_lang($footertexts);
 
-$footerbtitle2 = !empty(theme_taleem_get_setting('footerbtitle2')) ? theme_taleem_get_setting('footerbtitle2', 'format_text') : '';
-$footerbtitle2 = theme_taleem_lang($footerbtitle2);
+$footercolumn2title = !empty(theme_taleem_get_setting('footercolumn2title')) ? 
+theme_taleem_get_setting('footercolumn2title', 'format_text') : '';
+$footercolumn2title = theme_taleem_lang($footercolumn2title);
 
-$footerbtitle3 = !empty(theme_taleem_get_setting('footerbtitle3')) ? theme_taleem_get_setting('footerbtitle3', 'format_text') : '';
-$footerbtitle3 = theme_taleem_lang($footerbtitle3);
+$footercolumn3title = !empty(theme_taleem_get_setting('footercolumn3title')) ? 
+theme_taleem_get_setting('footercolumn3title', 'format_text') : '';
+$footercolumn3title = theme_taleem_lang($footercolumn3title);
 
-$footerbtitle4 = !empty(theme_taleem_get_setting('footerbtitle4')) ? theme_taleem_get_setting('footerbtitle4', 'format_text') : '';
-$footerbtitle4 = theme_taleem_lang($footerbtitle4);
+$footercolumn4title = !empty(theme_taleem_get_setting('footercolumn4title')) ? 
+theme_taleem_get_setting('footercolumn4title', 'format_text') : '';
+$footercolumn4title = theme_taleem_lang($footercolumn4title);
 
-$footerlinks = theme_taleem_generate_links('footerblink2');
-$logourl = theme_taleem_get_logo_url();
+$footerlinks = theme_taleem_create_urls('footerblink2');
+$logourl = theme_taleem_frontpage_logo_url();
 
-$fburl    = theme_taleem_get_setting('fburl');
-$fburl    = trim($fburl);
-$twurl    = theme_taleem_get_setting('twurl');
-$twurl    = trim($twurl);
-$gpurl    = theme_taleem_get_setting('gpurl');
-$gpurl    = trim($gpurl);
-$pinurl   = theme_taleem_get_setting('pinurl');
-$pinurl   = trim($pinurl);
+$fburls    = theme_taleem_get_setting('fburls');
+$fburls    = trim($fburls);
+$twurls    = theme_taleem_get_setting('twurls');
+$twurls    = trim($twurls);
+$gpurls    = theme_taleem_get_setting('gpurls');
+$gpurls    = trim($gpurls);
+$pinurls   = theme_taleem_get_setting('pinurls');
+$pinurls   = trim($pinurls);
 
-$socialurl = ($fburl != '' || $pinurl != '' || $twurl != '' || $gpurl != '') ? 1 : 0;
+$socialurl = ($fburls != '' || $pinurls != '' || $twurls != '' || $gpurls != '') ? 1 : 0;
 
 $fb = get_string('mediaicon1', 'theme_taleem');
 $tw = get_string('mediaicon2', 'theme_taleem');
@@ -84,18 +89,18 @@ $twn = get_string('medianame2', 'theme_taleem');
 $gpn = get_string('medianame3', 'theme_taleem');
 $pin = get_string('medianame4', 'theme_taleem');
 
-$address = theme_taleem_get_setting('address') ? theme_taleem_get_setting('address') : '';
-$emailid  = theme_taleem_get_setting('emailid');
-$phoneno  = theme_taleem_get_setting('phoneno');
+$footeraddress = theme_taleem_get_setting('footeraddress') ? theme_taleem_get_setting('footeraddress') : '';
+$footeremailid  = theme_taleem_get_setting('footeremailid');
+$footerfooterphoneno  = theme_taleem_get_setting('footerfooterphoneno');
 $mail = get_string('footeremail', 'theme_taleem');
-$phone = get_string('phone', 'theme_taleem');
+$footerphones = get_string('footerphones', 'theme_taleem');
 
 $copyright = theme_taleem_get_setting('copyright');
 
-$block1 = ($footerlogo != '' || $footnote != '') ? 1 : 0;
-$block2 = ($footerbtitle2 != '' || $footerlinks != '') ? 1 : 0;
-$block3 = ($footerbtitle3 != '' || $socialurl != 0) ? 1 : 0;
-$block4 = ($address != '' || $emailid != '' || $phoneno != '') ? 1 : 0;
+$block1 = ($footerlogos != '' || $footertexts != '') ? 1 : 0;
+$block2 = ($footercolumn2title != '' || $footerlinks != '') ? 1 : 0;
+$block3 = ($footercolumn3title != '' || $socialurl != 0) ? 1 : 0;
+$block4 = ($footeraddress != '' || $footeremailid != '' || $footerfooterphoneno != '') ? 1 : 0;
 
 $blockarrange = $block1 + $block2 + $block3 + $block4;
 
@@ -132,17 +137,17 @@ $templatecontext = [
     'logo' => $logo,
     'surl' => $surl,
 
-    'footerlogo' => $footerlogo,
-    'footnote' => $footnote,
-    'footerbtitle2' => $footerbtitle2,
-    'footerbtitle3' => $footerbtitle3,
-    'footerbtitle4' => $footerbtitle4,
+    'footerlogos' => $footerlogos,
+    'footertexts' => $footertexts,
+    'footercolumn2title' => $footercolumn2title,
+    'footercolumn3title' => $footercolumn3title,
+    'footercolumn4title' => $footercolumn4title,
     'footerlinks' => $footerlinks,
     'logourl' => $logourl,
-    'fburl' => $fburl,
-    'pinurl' => $pinurl,
-    'twurl' => $twurl,
-    'gpurl' => $gpurl,
+    'fburls' => $fburls,
+    'pinurls' => $pinurls,
+    'twurls' => $twurls,
+    'gpurls' => $gpurls,
     'fb' => $fb,
     'pi' => $pi,
     'tw' => $tw,
@@ -152,10 +157,10 @@ $templatecontext = [
     'twn' => $twn,
     'gpn' => $gpn,
     'socialurl' => $socialurl,
-    'address' => $address,
-    'phoneno' => $phoneno,
-    'emailid' => $emailid,
-    'phone' => $phone,
+    'footeraddress' => $footeraddress,
+    'footerfooterphoneno' => $footerfooterphoneno,
+    'footeremailid' => $footeremailid,
+    'footerphones' => $footerphones,
     'mail' => $mail,
     'copyright' => $copyright,
     'block1' => $block1,

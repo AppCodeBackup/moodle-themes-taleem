@@ -8,7 +8,7 @@ About Taleem Moodle theme
 ============================
 Taleem is a fully responsive Moodle theme well suited for Universities,Schools & Online learning websites.
 
-    Relesed on :   30 November 2018
+    Relesed on :   05 Febuary 2019
     Authors :   VWThemes
     Copyright © 2018 onwards www.vwthemes.com
 
