@@ -20,12 +20,12 @@
     Context variables required for this template:
     * sitename - The name of the site
     * output - The core renderer for the page
-    * bodyattributes - attributes for the body tag as a string of html attributes
+    * taleembodyattributes - attributes for the body tag as a string of html attributes
     * sidepreblocks - HTML for the blocks
-    * hasblocks - true if there are blocks on this page
-    * navdraweropen - true if the nav drawer should be open on page load
-    * regionmainsettingsmenu - HTML for the region main settings menu
-    * hasregionmainsettingsmenu - There is a region main settings menu on this page.
+    * taleemhasblocks - true if there are blocks on this page
+    * taleemnavdraweropen - true if the nav drawer should be open on page load
+    * taleemregionmainsettingsmenu - HTML for the region main settings menu
+    * hastaleemregionmainsettingsmenu - There is a region main settings menu on this page.
 
     Example context (json):
     {
@@ -36,12 +36,12 @@
             "favicon": "favicon.ico",
             "main_content": "<h1>Headings make html validators happier</h1>"
          },
-        "bodyattributes":"",
+        "taleembodyattributes":"",
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
-        "hasblocks":true,
-        "navdraweropen":true,
-        "regionmainsettingsmenu": "",
-        "hasregionmainsettingsmenu": false
+        "taleemhasblocks":true,
+        "taleemnavdraweropen":true,
+        "taleemregionmainsettingsmenu": "",
+        "hastaleemregionmainsettingsmenu": false
     }
 }}
 
@@ -55,17 +55,14 @@
         <div class="header-logo">
           <a class="navbar-brand" href="{{{ config.wwwroot }}}/?redirect=0">
           {{#logo}}
-            <img src= "{{logo}}" width="183" height="67" alt="Taleem">
+            <img class="image-mustache" src= "{{logo}}" alt="Taleem">
           {{/logo}}
           {{^logo}}
-            <img src= "{{logo}}" width="183" height="67" alt="Taleem">
+            <img class="image-mustache" src= "{{logo}}" alt="Taleem">
           {{/logo}}
           </a>
         </div>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>  
+      </div>
         <div class="col-md-9 header-main">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="custom-menu">
@@ -81,4 +78,9 @@
   </div>
 </div>
 
-<!--E.O.Header-->
+<style>
+.image-mustache {
+  width: 183px;
+  height: 67px
+}
+</style>

@@ -24,7 +24,6 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-// Get the HTML for the settings bits.
 $fontsselect = get_config('theme_taleempro', 'fontsselect');
 
 global $OUTPUT, $PAGE;
@@ -52,15 +51,15 @@ echo $OUTPUT->doctype() ?>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 </head>
 
-<body <?php echo $OUTPUT->body_attributes(); ?>>
-
+<body onload="hideDiv()" <?php echo $OUTPUT->body_attributes(); ?>>
+<div id="loader"><div class="lds-ripple"><div></div><div></div></div></div>
 
 <?php echo $OUTPUT->standard_top_of_body_html() ?>
 
 <?php
     require_once(dirname(__FILE__) . '/includes/header.php');
-    echo $headerlayout;
-    require_once(dirname(__FILE__) . '/includes/topbar.php');
+    echo $taleemheaderlayout;
+    require_once(dirname(__FILE__) . '/includes/taleem_topbar.php');
 ?>
 
 <!--E.O.Custom theme header-->
@@ -69,7 +68,7 @@ echo $OUTPUT->doctype() ?>
 <?php
 $toggleslideshow = theme_taleem_get_setting('toggleslideshow');
 if ($toggleslideshow == 1) {
-    require_once(dirname(__FILE__) . '/includes/slider.php');
+    require_once(dirname(__FILE__) . '/includes/taleem_slider.php');
 }
 
 ?>
@@ -99,11 +98,11 @@ if ($toggleslideshow == 1) {
         <?php echo $OUTPUT->blocks('side-pre', 'col-md-3'); ?>
 
     </div>
-    <?php echo (!empty($flatnavbar)) ? $flatnavbar : ""; ?>
+    <?php echo (!empty($taleemflatnavbar)) ? $taleemflatnavbar : ""; ?>
 </div>
 
 <?php
-    require_once(dirname(__FILE__) . '/includes/we-offer.php');
+    require_once(dirname(__FILE__) . '/includes/taleem_we-offer.php');
     require_once(dirname(__FILE__) . '/includes/footer.php');
     echo $footerlayout;
 ?>
@@ -113,6 +112,51 @@ if ($toggleslideshow == 1) {
 body{
     font-family: <?php echo $fontsselect; ?>
 }
-</style>   
+.lds-ripple {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #6bf50b;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 28px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: -1px;
+    left: -1px;
+    width: 58px;
+    height: 58px;
+    opacity: 0;
+  }
+}
+#loader {
+    background: #fff;
+    height: 100vh;
+}
+
+</style>
+
+<script>
+  function hideDiv() {
+      document.getElementById('loader').style.display = "none";
+  }
+</script>   
 </body>
 </html>

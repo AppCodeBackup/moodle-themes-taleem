@@ -25,17 +25,16 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$blockshtml = $OUTPUT->blocks('side-pre');
-$hasblocks = strpos($blockshtml, 'data-block=') !== false;
-$bodyattributes = $OUTPUT->body_attributes();
+$taleemblockshtml = $OUTPUT->blocks('side-pre');
+$taleemhasblocks = strpos($taleemblockshtml, 'data-block=') !== false;
+$taleembodyattributes = $OUTPUT->body_attributes();
 
-$templatecontext = [
+$taleemtemplatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
-    'bodyattributes' => $bodyattributes,
-    'sidepreblocks' => $blockshtml,
-    'hasblocks' => $hasblocks
+    'taleembodyattributes' => $taleembodyattributes,
+    'sidepreblocks' => $taleemblockshtml,
+    'taleemhasblocks' => $taleemhasblocks
 ];
 
-echo $OUTPUT->render_from_template('theme_taleem/secure', $templatecontext);
-
+echo $OUTPUT->render_from_template('theme_taleem/secure', $taleemtemplatecontext);

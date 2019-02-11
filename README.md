@@ -1,4 +1,4 @@
-The "Taleem" Moodle Theme
++The "Taleem" Moodle Theme
 ============================
 ![image1](pix/screenshot.jpg "Taleem Screenshot")
 
@@ -8,13 +8,13 @@ About Taleem Moodle theme
 ============================
 Taleem is a fully responsive Moodle theme well suited for Universities,Schools & Online learning websites.
 
-    Relesed on :   05 Febuary 2019
+    Relesed on :   15 Febuary 2019
     Authors :   VWThemes
     Copyright © 2018 onwards www.vwthemes.com
 
 Supported moodle versions
 ============================
-Compatible with Moodle 3.6+
+Compatible with Moodle 3.6.2+
 
 Taleem theme - Installation steps
 ============================

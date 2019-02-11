@@ -16,50 +16,36 @@
 }}
 {{!
     Page navbar.
-
-    Context variables required for this template:
-    * sitename - The name of the site
-    * output - The core renderer for the page
-    * bodyattributes - attributes for the body tag as a string of html attributes
-    * sidepreblocks - HTML for the blocks
-    * hasblocks - true if there are blocks on this page
-    * navdraweropen - true if the nav drawer should be open on page load
-    * regionmainsettingsmenu - HTML for the region main settings menu
-    * hasregionmainsettingsmenu - There is a region main settings menu on this page.
-
-    Example context (json):
-    {
-        "sitename": "Moodle",
-        "output": {
-            "doctype": "<!DOCTYPE html>",
-            "page_title": "Test page",
-            "favicon": "favicon.ico",
-            "main_content": "<h1>Headings make html validators happier</h1>"
-         },
-        "bodyattributes":"",
-        "sidepreblocks": "<h2>Blocks html goes here</h2>",
-        "hasblocks":true,
-        "navdraweropen":true,
-        "regionmainsettingsmenu": "",
-        "hasregionmainsettingsmenu": false
-    }
 }}
-<nav id="header" class="fixed-top navbar navbar-light bg-white navbar-expand moodle-has-zindex">
-    <div class="header-menubar">
-        <div class="container">
-            <div class="navbar">
-             <div class="navbar-inner">
-                <div data-region="drawer-toggle" class="d-inline-block mr-3">
-                    <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    </button>
-                </div>
-            </div>
+<nav class="fixed-top navbar navbar-light navbar-expand moodle-has-zindex">
 
+        <div data-region="drawer-toggle" class="d-inline-block mr-3">
+            <button aria-expanded="{{#taleemnavdraweropen}}true{{/taleemnavdraweropen}}{{^taleemnavdraweropen}}false{{/taleemnavdraweropen}}" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+        </div>
+
+        <a href="{{{ config.wwwroot }}}" class="navbar-brand {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
+            {{^ output.should_display_navbar_logo }}
+                d-none d-sm-inline
+            {{/ output.should_display_navbar_logo }}
+                ">
+            {{# output.should_display_navbar_logo }}
+                <span class="logo d-none d-sm-inline">
+                    <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+                </span>
+            {{/ output.should_display_navbar_logo }}
+            <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+        </a>
+
+        <ul class="navbar-nav d-none d-md-flex">
+            <!-- custom_menu -->
+            {{{ output.custom_menu }}}
+            <!-- page_heading_menu -->
+            {{{ output.page_heading_menu }}}
+        </ul>
         <ul class="nav navbar-nav ml-auto">
-
+            <div class="d-none d-lg-block">
+            {{{ output.search_box }}}
+        </div>
             <!-- navbar_plugin_output -->
             <li class="nav-item">
             {{{ output.navbar_plugin_output }}}
@@ -70,24 +56,20 @@
             </li>
         </ul>
         <!-- search_box -->
-
-          <div id="Mainmenu" class="nav-collapse collapse navbar-responsive-collapse">
-
-            {{{output.custom_menu}}}
-
-            <div class="custom-nav-search">
-                {{#surl}}
-                <form action=("surl") method="get">
-                    <div class="fields-wrap">
-                        <input type="text" placeholder="<?php echo get_string('searchcourses'); ?>" name="search">
-                        <div class="btn-search fa fa-search"><input type="submit" value="Search"></div>
-                    </div>
-                </form>
-                {{/surl}}
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
 </nav>
+
+<style>
+.navbar-nav.d-none.d-md-flex {
+    display: none !important;
+}
+.fixed-top {
+    background: #222 !important;
+    z-index: 9999999;
+}
+.btn.nav-link {
+    background: #fff;
+}
+.site-name {
+    display: none !important;
+}
+</style>

@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Contains the header blocks.
- * @package    theme_taleem
- * @copyright  2018 VWThemes, vwthemes.com/lms-themes
- * @author     VWThemes
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * A two column layout for the boost theme.
+ *
+ * @package   theme_boost
+ * @copyright 2016 Damyon Wiese
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -36,14 +36,10 @@ $taleemextraclasses = [];
 if ($taleemnavdraweropen) {
     $taleemextraclasses[] = 'drawer-open-left';
 }
-
 $taleembodyattributes = $OUTPUT->body_attributes($taleemextraclasses);
 $taleemblockshtml = $OUTPUT->blocks('side-pre');
 $taleemhasblocks = strpos($taleemblockshtml, 'data-block=') !== false;
 $taleemregionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
-$logo = theme_taleem_frontpage_logo_url();
-$surl = new moodle_url('/course/search.php');
-
 $taleemtemplatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -52,11 +48,9 @@ $taleemtemplatecontext = [
     'taleembodyattributes' => $taleembodyattributes,
     'taleemnavdraweropen' => $taleemnavdraweropen,
     'taleemregionmainsettingsmenu' => $taleemregionmainsettingsmenu,
-    'hastaleemregionmainsettingsmenu' => !empty($taleemregionmainsettingsmenu),
-    'logo' => $logo,
-    'surl' => $surl,
-    ];
+    'hastaleemregionmainsettingsmenu' => !empty($taleemregionmainsettingsmenu)
+];
 
 $taleemtemplatecontext['flatnavigation'] = $PAGE->flatnav;
-$taleemflatnavbar = $OUTPUT->render_from_template('theme_boost/nav-drawer', $taleemtemplatecontext);
-$taleemheaderlayout = $OUTPUT->render_from_template('theme_taleem/header', $taleemtemplatecontext);
+echo $OUTPUT->render_from_template('theme_boost/column2', $taleemtemplatecontext);
+

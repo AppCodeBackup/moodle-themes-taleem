@@ -88,7 +88,6 @@ body {
     font-size: 16px;
     color: $color_fuscous_gray_approx;
     padding-top: 0;
-    background: $black_50;
 }
 #page-site-index {
     background: $white;
@@ -6214,4 +6213,30 @@ a {
 }
 #footer .footer-foot {
     padding: 9px 0;
+}
+
+.fixed-top {
+    background: #fff !important;
+    z-index: 9999999;
+}
+#page-footer {
+    min-height: 19px;
+    text-align: left;
+}
+.homelink {
+    display: none;
+}
+.dropdown-divider {
+    margin: .0rem 0;
+    border-top: 1px transparent;
+}
+#page {
+    padding-bottom: 0px;
+    margin-top: 50px;
+}
+.nav-tabs {
+    margin: 0 auto;
+}
+#page-login-index .card {
+    background-color: transparent !important;
 }

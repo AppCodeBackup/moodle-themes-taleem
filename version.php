@@ -29,16 +29,21 @@
 defined('MOODLE_INTERNAL') || die;
 
 // The current module version (Date: YYYYMMDDXX).
-$plugin->version   = 2019020505;
+$plugin->version   = 2019021506;
 
 // Version's maturity level.
 $plugin->maturity = MATURITY_STABLE;
 
 // Plugin release version.
-$plugin->release = 'v1.1.5';
+$plugin->release = 'v1.1.6';
 
 // Requires this Moodle version(+3.2).
 $plugin->requires  = 2016120500;
 
 // Full name of the plugin (used for diagnostics).
 $plugin->component = 'theme_taleem';
+
+// Plugin dependencies
+$plugin->dependencies = array(
+    'theme_boost'  => 2018120302,
+);

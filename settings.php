@@ -112,9 +112,9 @@ if (is_siteadmin()) {
     $temp->add($setting);
 
     // Number of slides.
-    $name = 'theme_taleem/numberofslides';
-    $title = get_string('numberofslides', 'theme_taleem');
-    $description = get_string('numberofslides_desc', 'theme_taleem');
+    $name = 'theme_taleem/totalslides';
+    $title = get_string('totalslides', 'theme_taleem');
+    $description = get_string('totalslides_desc', 'theme_taleem');
     $default = 3;
     $choices = array(
         1 => '1',
@@ -125,15 +125,11 @@ if (is_siteadmin()) {
         6 => '6',
         7 => '7',
         8 => '8',
-        9 => '9',
-        10 => '10',
-        11 => '11',
-        12 => '12',
     );
     $temp->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
 
-    $numberofslides = get_config('theme_taleem', 'numberofslides');
-    for ($i = 1; $i <= $numberofslides; $i++) {
+    $totalslides = get_config('theme_taleem', 'totalslides');
+    for ($i = 1; $i <= $totalslides; $i++) {
 
         // This is the descriptor for Slide One.
         $name = 'theme_taleem/slide' . $i . 'info';
@@ -150,32 +146,8 @@ if (is_siteadmin()) {
         $setting->set_updatedcallback('theme_reset_all_caches');
         $temp->add($setting);
 
-        // Slide Caption.
-        $name = 'theme_taleem/slide' . $i . 'caption';
-        $title = get_string('slidecaption', 'theme_taleem');
-        $description = get_string('slidecaptiondesc', 'theme_taleem');
-        $default = 'lang:slidecaptiondefault';
-        $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_TEXT);
-        $temp->add($setting);
-
-        // Slider button.
-        $name = 'theme_taleem/slide' . $i . 'urltext';
-        $title = get_string('slidebutton', 'theme_taleem');
-        $description = get_string('slidebuttondesc', 'theme_taleem');
-        $default = 'lang:knowmore';
-        $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_TEXT);
-        $temp->add($setting);
-
-        // Slide button link.
-        $name = 'theme_taleem/slide'.$i.'url';
-        $title = get_string('slidebuttonurl', 'theme_taleem');
-        $description = get_string('slidebuttonurldesc', 'theme_taleem');
-        $default = 'http://www.example.com/';
-        $setting = new admin_setting_configtext($name, $title, $description, $default, PARAM_URL);
-        $temp->add($setting);
     }
         $settings->add($temp);
-
 
 // -------------- We Offer --------------------
 
@@ -277,7 +249,7 @@ if (is_siteadmin()) {
     $name = 'theme_taleem/footertexts';
     $title = get_string('footertexts', 'theme_taleem');
     $description = get_string('footertextsdesc', 'theme_taleem');
-    $default = 'lang:footertextsdefault';
+    $default = 'footertextsdefault';
     $setting = new admin_setting_configtextarea($name, $title, $description, $default);
     $temp->add($setting);
     /* Footer Block1. */
@@ -292,7 +264,7 @@ if (is_siteadmin()) {
     $name = 'theme_taleem/footercolumn2title';
     $title = get_string('footerblock', 'theme_taleem').' '.get_string('title', 'theme_taleem').' 2 ';
     $description = get_string('footerbtitle_desc', 'theme_taleem');
-    $default = 'lang:footercolumn2titledefault';
+    $default = 'footercolumn2titledefault';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 
@@ -314,7 +286,7 @@ if (is_siteadmin()) {
     $name = 'theme_taleem/footercolumn3title';
     $title = get_string('footerblock', 'theme_taleem').' '.get_string('title', 'theme_taleem').' 3 ';
     $description = get_string('footerbtitle_desc', 'theme_taleem');
-    $default = 'lang:footercolumn3titledefault';
+    $default = 'footercolumn3titledefault';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 
@@ -387,7 +359,7 @@ if (is_siteadmin()) {
     $name = 'theme_taleem/footercolumn4title';
     $title = get_string('footerblock', 'theme_taleem').' '.get_string('title', 'theme_taleem').' 4 ';
     $description = get_string('footerbtitle_desc', 'theme_taleem');
-    $default = 'lang:footercolumn4titledefault';
+    $default = 'footercolumn4titledefault';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $temp->add($setting);
 

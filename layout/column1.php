@@ -15,24 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * A login page layout for the boost theme.
+ * A two column layout for the boost theme.
  *
- * @package     theme_taleem
- * @copyright   2018 VWThemes, vwthemes.com/lms-themes
- * @author      VWThemes
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   theme_taleem
+ * @copyright 2018 VWThemes, vwthemes.com/lms-themes
+ * @author    VWThemes
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
-$taleembodyattributes = $OUTPUT->body_attributes();
-require_once(dirname(__FILE__) .'/includes/header.php');
-echo $taleemheaderlayout;
+
+$taleembodyattributes = $OUTPUT->body_attributes([]);
+
 $taleemtemplatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'taleembodyattributes' => $taleembodyattributes
 ];
 
-echo $OUTPUT->render_from_template('theme_taleem/login', $taleemtemplatecontext);
-require_once(dirname(__FILE__) .'/includes/footer.php');
-echo $footerlayout;
+echo $OUTPUT->render_from_template('theme_boost/column1', $taleemtemplatecontext);
+

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The maintenance layout.
+ * The footer layout.
  *
  * @package   theme_taleem
  * @copyright 2018 VWThemes, vwthemes.com/lms-themes
@@ -28,19 +28,8 @@ defined('MOODLE_INTERNAL') || die();
 user_preference_allow_ajax_update('drawer-open-nav', PARAM_ALPHA);
 require_once($CFG->libdir . '/behat/lib.php');
 
-if (isloggedin()) {
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
-} else {
-    $navdraweropen = false;
-}
-$extraclasses = [];
-if ($navdraweropen) {
-    $extraclasses[] = 'drawer-open-left';
-}
-$bodyattributes = $OUTPUT->body_attributes($extraclasses);
-$blockshtml = $OUTPUT->blocks('side-pre');
-$hasblocks = strpos($blockshtml, 'data-block=') !== false;
-$regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
+$taleembodyattributes = $OUTPUT->body_attributes($taleemextraclasses);
+$taleemregionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
 
 $footerlogos = !empty(theme_taleem_get_setting('footerlogos')) ? 1 : 0;
 
@@ -90,77 +79,109 @@ $footerphones = get_string('footerphones', 'theme_taleem');
 
 $copyright = theme_taleem_get_setting('copyright');
 
-$block1 = ($footerlogos != '' || $footertexts != '') ? 1 : 0;
-$block2 = ($footercolumn2title != '' || $footerlinks != '') ? 1 : 0;
-$block3 = ($footercolumn3title != '' || $socialurl != 0) ? 1 : 0;
-$block4 = ($footeraddress != '' || $footeremailid != '' || $footerfooterphoneno != '') ? 1 : 0;
 
-$blockarrange = $block1 + $block2 + $block3 + $block4;
+?>
 
-switch ($blockarrange) {
-    case 4:
-        $colclass = 'col-md-3';
-        break;
-    case 3:
-        $colclass = 'col-md-4';
-        break;
-    case 2:
-        $colclass = 'col-md-6';
-        break;
-    case 1:
-        $colclass = 'col-md-12';
-        break;
-    case 0:
-        $colclass = '';
-        break;
-    default:
-        $colclass = 'col-md-3';
-    break;
+<footer id="footer" class="py-3 bg-dark text-light">
+    <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="footer-desc">
+                        <div class="logo-footer">
+                            <a href="{{{ config.wwwroot }}}/?redirect=0">
+                                <img src="<?php echo($logourl); ?>" width="183" height="67" alt="Taleem">
+                            </a>
+                        </div>
+                        <p><?php echo($footertexts); ?></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-nav">
+                        <h4><?php echo($footercolumn2title); ?></h4>
+                        <ul>
+                           <?php echo($footerlinks); ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="social-media">
+                        <h4><?php echo($footercolumn3title); ?></h4>
+                        <ul>
+                            <li class="smedia-01">
+                                <a href="<?php echo($fburls); ?>" target="_blank">
+                                    <span class="media-icon">
+                                    <i class="fa <?php echo($fb); ?> footericon"></i>
+                                    </span>
+                                    <span class="media-name"><?php echo($fbn); ?></span>
+                                </a>
+                            </li>
+                            <li class="smedia-02">
+                                <a href="<?php echo($twurls); ?>" target="_blank">
+                                    <span class="media-icon">
+                                    <i class="fa <?php echo($tw); ?> footericon"></i>
+                                    </span>
+                                    <span class="media-name"><?php echo($twn); ?></span>
+                                </a>
+                            </li>
+                            <li class="smedia-03">
+                                <a href="<?php echo($gpurls); ?>" target="_blank">
+                                    <span class="media-icon">
+                                    <i class="fa <?php echo($gp); ?> footericon"></i>
+                                    </span>
+                                    <span class="media-name"><?php echo($gpn); ?></span>
+                                </a>
+                            </li>
+                            <li class="smedia-04">
+                                <a href="<?php echo($pinurls); ?>" target="_blank">
+                                   <span class="media-icon">
+                                   <i class="fa <?php echo($pi); ?> footericon"></i>
+                                   </span>
+                                   <span class="media-name"><?php echo($pin); ?></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-contact">
+                        <h4><?php echo($footercolumn4title); ?></h4>
+                        <p><i class="fa fa-map-marker"></i> <?php echo($footeraddress); ?></p>
+                            <p><i class="fa fa-footerphones-square"></i> <?php echo($footerphones); ?>: <?php echo($footerfooterphoneno); ?></p>
+                            <p><i class="fa fa-envelope"></i> <?php echo($mail); ?> <a class="mail-link" href="mailto:<?php echo($footeremailid); ?>"><?php echo($footeremailid); ?></a>
+                          </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <?php $footerlayout = $OUTPUT->render_from_template('theme_taleem/footer', $taleemtemplatecontext); ?>
+<div class="footer-foot">
+    <div class="container"><?php echo($copyright); ?></div>
+</div>
+
+</footer>
+
+<style scoped>
+.fa.fa-facebook-f.footericon {
+    padding: 0px 13px;
+    margin-top: 0px;
+    border-radius: 65px;    
 }
-
-$templatecontext = [
-    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-    'output' => $OUTPUT,
-    'sidepreblocks' => $blockshtml,
-    'hasblocks' => $hasblocks,
-    'bodyattributes' => $bodyattributes,
-    'navdraweropen' => $navdraweropen,
-    'regionmainsettingsmenu' => $regionmainsettingsmenu,
-    'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu),
-
-    'footerlogos' => $footerlogos,
-    'footertexts' => $footertexts,
-    'footercolumn2title' => $footercolumn2title,
-    'footercolumn3title' => $footercolumn3title,
-    'footercolumn4title' => $footercolumn4title,
-    'footerlinks' => $footerlinks,
-    'logourl' => $logourl,
-    'fburls' => $fburls,
-    'pinurls' => $pinurls,
-    'twurls' => $twurls,
-    'gpurls' => $gpurls,
-    'fb' => $fb,
-    'pi' => $pi,
-    'tw' => $tw,
-    'gp' => $gp,
-    'fbn' => $fbn,
-    'pin' => $pin,
-    'twn' => $twn,
-    'gpn' => $gpn,
-    'socialurl' => $socialurl,
-    'footeraddress' => $footeraddress,
-    'footerfooterphoneno' => $footerfooterphoneno,
-    'footeremailid' => $footeremailid,
-    'footerphones' => $footerphones,
-    'mail' => $mail,
-    'copyright' => $copyright,
-    'block1' => $block1,
-    'block2' => $block2,
-    'block3' => $block3,
-    'block4' => $block4,
-    'colclass' => $colclass,
-    'blockarrange' => $blockarrange
-    ];
-
-    $templatecontext['flatnavigation'] = $PAGE->flatnav;
-    $footerlayout = $OUTPUT->render_from_template('theme_taleem/footer', $templatecontext);
+.fa.fa-twitter.footericon {
+    padding: 0px 11px;
+    margin-top: 0px;
+    border-radius: 65px;
+}
+.fa.fa-google-plus.footericon {
+    padding: 0px 8px;
+    margin-top: 0px;
+    border-radius: 65px;
+}
+.fa.fa-pinterest-p.footericon {
+    padding: 0px 13px;
+    margin-top: 0px;
+    border-radius: 65px;
+}
+</style>

@@ -27,8 +27,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-require_once('layout/renderers/core_renderer.php');
-require_once('layout/renderers/course_renderer.php');
+
 
 
 function theme_taleem_render_weofferimg($p, $sliname) {
@@ -302,10 +301,10 @@ function theme_taleem_pre_css_set_fontwww($css) {
  * @param string $sliname
  * @return null
  */
-function theme_taleem_render_front_page_slideimg($p, $sliname) {
+function theme_taleem_render_front_page_taleemslideimg($p, $sliname) {
     global $PAGE, $OUTPUT;
 
-    $nos = theme_taleem_get_setting('numberofslides');
+    $nos = theme_taleem_get_setting('totalslides');
     $i = $p % 3;
     $slideimage = $OUTPUT->image_url('slider/slide'.$i, 'theme');
 
